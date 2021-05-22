@@ -1,0 +1,145 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://script/player_movement.cs" type="Script" id=1]
+[ext_resource path="res://material/texture/football_ball.png" type="Texture" id=2]
+[ext_resource path="res://script/enemy.cs" type="Script" id=3]
+[ext_resource path="res://material/texture/grid_green.png" type="Texture" id=4]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 50, 50 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.709804, 0.976471, 0.611765, 1 )
+albedo_texture = ExtResource( 4 )
+uv1_scale = Vector3( 4, 4, 4 )
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 10.0
+rough = true
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SphereShape" id=6]
+radius = 0.5
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 2.26398, 1, 1.83452 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+albedo_color = Color( 1, 0, 0, 0.133333 )
+
+[sub_resource type="CubeMesh" id=9]
+material = SubResource( 8 )
+size = Vector3( 4.528, 2, 3.67 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.980392, 0.0431373, 0.0431373, 1 )
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="CylinderMesh" id=11]
+top_radius = 6.0
+bottom_radius = 6.0
+height = 0.1
+
+[sub_resource type="SpatialMaterial" id=12]
+flags_transparent = true
+albedo_color = Color( 0.992157, 0.352941, 0.352941, 0.352941 )
+
+[sub_resource type="CylinderShape" id=13]
+radius = 5.99559
+
+[sub_resource type="CylinderShape" id=14]
+radius = 2.61585
+
+[node name="game" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.79213, 0.610353, 0, -0.610353, 0.79213, 0, 13.4149, 11.4836 )
+
+[node name="floor" type="CSGMesh" parent="."]
+use_collision = true
+mesh = SubResource( 1 )
+material = SubResource( 2 )
+
+[node name="player" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908539, 0 )
+mass = 5.0
+physics_material_override = SubResource( 3 )
+script = ExtResource( 1 )
+speedRatio = 0.2
+maxVelocity = 0.6
+
+[node name="RemoteTransform" type="RemoteTransform" parent="player"]
+remote_path = NodePath("../../pivot")
+update_rotation = false
+update_scale = false
+
+[node name="MeshInstance" type="MeshInstance" parent="player"]
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player"]
+shape = SubResource( 6 )
+
+[node name="finish" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198619, -19.9492 )
+
+[node name="CollisionShape" type="CollisionShape" parent="finish"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801381, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="finish"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801381, 0 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908539, 0 )
+
+[node name="Camera" type="Camera" parent="pivot"]
+transform = Transform( 1, 0, 0, 0, 0.897389, 0.44124, 0, -0.44124, 0.897389, 0, 5.82949, 7.61806 )
+
+[node name="targetLook" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.9233 )
+
+[node name="enemy" type="Spatial" parent="."]
+
+[node name="enemy_1" type="KinematicBody" parent="enemy"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5823, 0.908539, 0 )
+script = ExtResource( 3 )
+speed = 1.0
+inactiveWaitTime = 0.5
+rushSpeed = 2.3
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy/enemy_1"]
+mesh = SubResource( 4 )
+material/0 = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy/enemy_1"]
+shape = SubResource( 6 )
+
+[node name="outside" type="Area" parent="enemy/enemy_1"]
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy/enemy_1/outside"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46848, 0 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy/enemy_1/outside"]
+shape = SubResource( 13 )
+
+[node name="inside" type="Area" parent="enemy/enemy_1"]
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy/enemy_1/inside"]
+transform = Transform( 0.429793, 0, 0, 0, 0.729899, 0, 0, 0, 0.429793, 0, -0.46848, 0 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="enemy/enemy_1/inside"]
+shape = SubResource( 14 )

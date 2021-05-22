@@ -1,0 +1,23 @@
+Godot Engine v3.2.3.stable.mono.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: Intel(R) HD Graphics 6000
+ 
+Registered camera FaceTime HD Camera with id 1 position 0 at index 0
+Mono: Log file is: '/Users/emir/Library/Application Support/Godot/mono/mono_logs/2021_05_22 01.53.00 (8459).txt'
+**ERROR**: Cannot open file 'res://script/player_movement.cs'.
+   At: modules/mono/utils/string_utils.cpp:168:read_all_file_utf8() - Condition "err != OK" is true. Returned: err
+**ERROR**: Failed to read file: 'res://script/player_movement.cs'.
+   At: modules/mono/csharp_script.cpp:3361:load_source_code() - Condition "ferr != OK" is true. Returned: ferr
+**ERROR**: Cannot load C# script file 'res://script/player_movement.cs'.
+   At: modules/mono/csharp_script.cpp:3431:load() - Condition "err != OK" is true. Returned: RES()
+**ERROR**: Failed loading resource: res://script/player_movement.cs. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:279:_load() - Condition "found" is true. Returned: RES()
+**ERROR**: res://game.tscn:3 - Parse Error: [ext_resource] referenced nonexistent resource at: res://script/player_movement.cs
+   At: scene/resources/resource_format_text.cpp:440:poll() - res://game.tscn:3 - Parse Error: [ext_resource] referenced nonexistent resource at: res://script/player_movement.cs
+**ERROR**: Failed to load resource 'res://game.tscn'.
+   At: core/io/resource_loader.cpp:208:load() - Condition "err != OK" is true. Returned: RES()
+**ERROR**: Failed loading resource: res://game.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:279:_load() - Condition "found" is true. Returned: RES()
+**ERROR**: Failed loading scene: res://game.tscn
+   At: main/main.cpp:1944:start() - Condition "!scene" is true. Returned: false
+**WARNING**: ObjectDB instances leaked at exit (run with --verbose for details).
+   At: core/object.cpp:2135:cleanup() - ObjectDB instances leaked at exit (run with --verbose for details).
