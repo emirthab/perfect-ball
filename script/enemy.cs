@@ -23,8 +23,8 @@ public class enemy : KinematicBody
     public override void _Ready()
     {
         animPlayer = GetNode<AnimationPlayer>("enemy/AnimationPlayer");
-        GetNode<MeshInstance>("inside/MeshInstance").Visible = false;
-        GetNode<MeshInstance>("outside/MeshInstance").Visible = false;
+        GetNode<MeshInstance>("inside/MeshInstance").QueueFree();
+        GetNode<MeshInstance>("outside/MeshInstance").QueueFree();
         
         inactiveTimer.WaitTime = inactiveWaitTime;
         inactiveTimer.OneShot = true;

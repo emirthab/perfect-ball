@@ -1093,7 +1093,7 @@ tracks/34/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.183666, -0.308483, 0.0991656 ), Vector3( 0.195415, -0.442468, 0.338625 ), Vector3( 0.213705, -0.606394, 0.596267 ), Vector3( 0.272038, -0.718684, 0.707322 ), Vector3( 0.272038, -0.718684, 0.87023 ), Vector3( 0.272038, -0.718684, 0.985939 ) ]
+"values": [ Vector3( 0.183666, -0.308483, 0.0991656 ), Vector3( 0.195415, -0.442468, 0.338625 ), Vector3( 0.213705, -0.606394, 0.596267 ), Vector3( 0.272038, -0.718684, 0.707322 ), Vector3( 0.272038, -0.718684, 0.87023 ), Vector3( 0.136425, -0.718684, 1.07394 ) ]
 }
 tracks/35/type = "value"
 tracks/35/path = NodePath("../touchPoint/CollisionShape:rotation_degrees")
@@ -1105,7 +1105,7 @@ tracks/35/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -46.0763, 142.547, -167.359 ), Vector3( -39.61, 149.057, -173.6 ), Vector3( -37.9213, 150.019, -174.994 ), Vector3( -28.1007, 155.1, 178.527 ), Vector3( -10.7218, 157.79, 170.538 ), Vector3( -5.51815, 158.091, 168.408 ) ]
+"values": [ Vector3( -46.0763, 142.547, -167.359 ), Vector3( -39.61, 149.057, -173.6 ), Vector3( -37.9213, 150.019, -174.994 ), Vector3( -28.1007, 155.1, 178.527 ), Vector3( -10.7218, 157.79, 170.538 ), Vector3( -5.51815, 147.432, 168.408 ) ]
 }
 tracks/36/type = "value"
 tracks/36/path = NodePath("../CollisionShape:translation")
@@ -1117,7 +1117,7 @@ tracks/36/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.183666, -0.308483, 0.0991656 ), Vector3( 0.195415, -0.442468, 0.338625 ), Vector3( 0.213705, -0.606394, 0.596267 ), Vector3( 0.272038, -0.718684, 0.707322 ), Vector3( 0.272038, -0.718684, 0.87023 ), Vector3( 0.272038, -0.718684, 0.985939 ) ]
+"values": [ Vector3( 0.183666, -0.308483, 0.0991656 ), Vector3( 0.195415, -0.442468, 0.338625 ), Vector3( 0.213705, -0.606394, 0.596267 ), Vector3( 0.272038, -0.718684, 0.707322 ), Vector3( 0.272038, -0.718684, 0.87023 ), Vector3( 0.136425, -0.718684, 1.07394 ) ]
 }
 tracks/37/type = "value"
 tracks/37/path = NodePath("../CollisionShape:rotation_degrees")
@@ -1129,7 +1129,7 @@ tracks/37/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -46.0763, 142.547, -167.359 ), Vector3( -39.61, 149.057, -173.6 ), Vector3( -37.9213, 150.019, -174.994 ), Vector3( -28.1007, 155.1, 178.527 ), Vector3( -10.7218, 157.79, 170.538 ), Vector3( -5.51815, 158.091, 168.408 ) ]
+"values": [ Vector3( -46.0763, 142.547, -167.359 ), Vector3( -39.61, 149.057, -173.6 ), Vector3( -37.9213, 150.019, -174.994 ), Vector3( -28.1007, 155.1, 178.527 ), Vector3( -10.7218, 157.79, 170.538 ), Vector3( -5.51815, 147.432, 168.408 ) ]
 }
 
 [sub_resource type="CapsuleShape" id=10]
@@ -1166,7 +1166,7 @@ rushSpeed = 2.3
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.875989, 0 )
 
 [node name="Armature" type="Spatial" parent="enemy"]
-transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, 0 )
+transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, -5.85966 )
 
 [node name="Skeleton" type="Skeleton" parent="enemy/Armature"]
 transform = Transform( 1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0 )
@@ -1372,7 +1372,7 @@ anims/run = SubResource( 8 )
 anims/slide = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
+transform = Transform( 0.815167, 0.220045, 0.535802, 0.200002, -0.975065, 0.0961611, 0.543602, 0.0287739, -0.83885, 0.136425, -0.718684, 1.07394 )
 shape = SubResource( 10 )
 
 [node name="outside" type="Area" parent="."]
@@ -1398,5 +1398,5 @@ shape = SubResource( 14 )
 [node name="touchPoint" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="touchPoint"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
+transform = Transform( 0.815167, 0.220045, 0.535802, 0.200002, -0.975065, 0.0961611, 0.543602, 0.0287739, -0.83885, 0.136425, -0.718684, 1.07394 )
 shape = SubResource( 15 )
