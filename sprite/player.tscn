@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://material/texture/football_ball.png" type="Texture" id=1]
+[ext_resource path="res://script/player_movement.cs" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 10.0
+rough = true
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SphereShape" id=4]
+radius = 0.3
+
+[node name="player" type="Spatial"]
+
+[node name="body" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908539, 0 )
+mass = 5.0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 2 )
+speedRatio = 0.3
+maxVelocity = 0.5
+
+[node name="RemoteTransform" type="RemoteTransform" parent="body"]
+remote_path = NodePath("../../pivot")
+update_rotation = false
+update_scale = false
+
+[node name="MeshInstance" type="MeshInstance" parent="body"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="body"]
+shape = SubResource( 4 )
+
+[node name="pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908539, 0 )
+
+[node name="Camera" type="Camera" parent="pivot"]
+transform = Transform( 1, 0, 0, 0, 0.990246, 0.139329, 0, -0.139329, 0.990246, 0, 4.83001, 10.7335 )

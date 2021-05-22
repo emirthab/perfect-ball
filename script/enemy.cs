@@ -3,6 +3,7 @@ using System;
 
 public class enemy : KinematicBody
 {
+    private AnimationPlayer animPlayer;
     private bool die = false;
     private RigidBody player;
     private bool chase = false;
@@ -10,7 +11,6 @@ public class enemy : KinematicBody
     [Export]
     private float speed;
 
-    private Vector3 rushVec;
     private bool inactive = false;
     private Timer inactiveTimer = new Timer();
     
@@ -19,17 +19,24 @@ public class enemy : KinematicBody
 
     [Export]
     private float rushSpeed;
-    
+    Vector3 direction;
     public override void _Ready()
     {
+        animPlayer = GetNode<AnimationPlayer>("enemy/AnimationPlayer");
+        GetNode<MeshInstance>("inside/MeshInstance").Visible = false;
+        GetNode<MeshInstance>("outside/MeshInstance").Visible = false;
+        
         inactiveTimer.WaitTime = inactiveWaitTime;
         inactiveTimer.OneShot = true;
         inactiveTimer.Connect("timeout",this,"inactiveTimeout");
         AddChild(inactiveTimer);
 
-        player = GetNode<RigidBody>("../../player");
+        player = GetNode<RigidBody>("../player/body");
         GetNode<Area>("outside").Connect("body_entered",this,"outSideEntered");   
         GetNode<Area>("inside").Connect("body_entered",this,"inSideEntered");   
+        GetNode<Area>("touchPoint").Connect("body_entered",this,"TouchEntered");
+
+        animPlayer.Play("idle");
     }
 
 
@@ -43,21 +50,22 @@ public class enemy : KinematicBody
     {
         if (chase == true && die == false)
         {
-            Vector3 direction = player.GlobalTransform.origin - this.GlobalTransform.origin;
-            this.MoveAndCollide(direction * speed * delta);
+            direction = player.GlobalTransform.origin - this.GlobalTransform.origin;
         }
-        else if (die == true && inactive == false)
+        if (inactive == false)
         {
-            this.MoveAndCollide(rushVec * speed * delta);
+            LookAt(-direction+this.GlobalTransform.origin,Vector3.Up);
+            this.MoveAndCollide(direction * speed * delta);
+
         }
 
     }
 
     public void inSideEntered(RigidBody body)
     {
-        if (body == player)
+        if (body == player && die == false)
         {
-            rushVec = player.GlobalTransform.origin - this.GlobalTransform.origin;
+            animPlayer.Play("slide");
             speed = rushSpeed;
             die = true;
             inactiveTimer.Start();
@@ -66,13 +74,22 @@ public class enemy : KinematicBody
 
     public void outSideEntered(RigidBody body)
     {
-        if (body == player)
+        if (body == player && die == false)
         {
+            animPlayer.Play("run");
             chase = true;
         }
     }
     public void inactiveTimeout()
     {
         inactive = true;
+    }
+
+    public void TouchEntered(RigidBody body)
+    {
+        if (body == player && inactive == false)
+        {
+            GetTree().ReloadCurrentScene();
+        }
     }
 }

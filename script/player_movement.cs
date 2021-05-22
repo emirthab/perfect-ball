@@ -14,13 +14,13 @@ public class player_movement : RigidBody
 
     //pivot' s lookAt vector so this is targetLook node' s position.
     private Vector3 lookVector(){
-        Position3D targetLook = GetNode<Position3D>("../targetLook");
+        Position3D targetLook = GetNode<Position3D>("../../targetLook");
         Vector3 targetOrgin = targetLook.Transform.origin;
         return targetOrgin;
     }
     public override void _Ready()
     {
-        GetNode<Area>("../finish").Connect("body_entered",this,"finishEntered");   
+        GetNode<Area>("../../finish").Connect("body_entered",this,"finishEntered");   
     }
 
     public override void _PhysicsProcess(float delta)
@@ -99,7 +99,6 @@ public class player_movement : RigidBody
     {
         //pivot is looking at targetLook position' s 
         GetNode<Spatial>("../pivot").LookAt(lookVector(),Vector3.Up);
-        
 
     }
     public void finishEntered(RigidBody body)
