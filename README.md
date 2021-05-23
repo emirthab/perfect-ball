@@ -12,7 +12,7 @@ https://sketchfab.com/3d-models/low-poly-city-579d7493dbbc4cfa9fd50dde3df229bb
 
 ![alt text](https://github.com/emirthab/perfect-ball/blob/main/screenshots/5.gif?raw=true)
 
-#You can change enemy's power on right inspector:
+## You can change enemy's power on right inspector:
 
 Min Shot Power = Minimum power (representative ratio) for the shooting mechanics.
 Shoot Wait Time = Time to get the shooting mechanics after touching the screen (Timer).
@@ -22,7 +22,7 @@ Max Velocity = maximum linear velocity ratio (representative ratio)
 
 ![alt text](https://github.com/emirthab/perfect-ball/blob/main/screenshots/shot_1.png?raw=true)
 
-#You can change player's power on right inspector:
+## You can change player's power on right inspector:
 
 Kick Power Up = the ratio of the enemy's upward pushing force after hitting the ball.
 Kick Power Horizontal = The ratio of the enemy's thrust on the horizontal surface after hitting the ball.
