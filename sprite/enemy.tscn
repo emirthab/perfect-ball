@@ -1168,7 +1168,7 @@ rushSpeed = 2.3
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.875989, 0 )
 
 [node name="Armature" type="Spatial" parent="enemy"]
-transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, -5.85966 )
+transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="enemy/Armature"]
 transform = Transform( 1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0 )
@@ -1374,7 +1374,7 @@ anims/run = SubResource( 8 )
 anims/slide = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.870462, 0.253655, 0.421846, -0.15181, -0.676885, 0.720264, 0.46824, -0.691004, -0.550695, 0.183666, -0.308483, 0.0991656 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
 shape = SubResource( 10 )
 
 [node name="outside" type="Area" parent="."]
@@ -1400,5 +1400,5 @@ shape = SubResource( 14 )
 [node name="touchPoint" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="touchPoint"]
-transform = Transform( 0.870462, 0.253655, 0.421846, -0.15181, -0.676885, 0.720264, 0.46824, -0.691004, -0.550695, 0.183666, -0.308483, 0.0991656 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
 shape = SubResource( 15 )

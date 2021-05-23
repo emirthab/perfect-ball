@@ -689,7 +689,7 @@ transform = Transform( -6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09
 [node name="car" type="Spatial" parent="props"]
 
 [node name="bus_1" parent="props/car" instance=ExtResource( 18 )]
-transform = Transform( 0.99966, 0, 0.0260898, 0, 1, 0, -0.0260898, 0, 0.99966, -1.98183, 0.631564, -5.76683 )
+transform = Transform( 0.99966, 0, 0.0260898, 0, 1, 0, -0.0260898, 0, 0.99966, -2.26781, 0.631564, -5.76683 )
 
 [node name="car_1" parent="props/car" instance=ExtResource( 2 )]
 transform = Transform( 0.999141, 0, -0.0414396, 0, 1, 0, 0.0414396, 0, 0.999141, 2.38936, 0.286866, -1.4859 )
@@ -712,6 +712,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79553, 0.26778, -20.4351 )
 [node name="police_car" parent="props/car" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41795, 0.279068, -6.92826 )
 
+[node name="police_car2" parent="props/car" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90689, 0.279068, -9.2377 )
+
 [node name="collisions" type="Spatial" parent="."]
 
 [node name="StaticBody" type="StaticBody" parent="collisions"]
@@ -725,7 +728,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.68358
 shape = SubResource( 6 )
 
 [node name="car_3" type="CollisionShape" parent="collisions/StaticBody"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.60569, 1.27515, 0.57251 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.2769, 1.27515, 0.57251 )
 shape = SubResource( 7 )
 
 [node name="car_2" type="CollisionShape" parent="collisions/StaticBody"]
@@ -759,6 +762,10 @@ shape = SubResource( 10 )
 [node name="cone_7" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -6.81585, 0.630545, -29.5675 )
 shape = SubResource( 10 )
+
+[node name="car_4" type="CollisionShape" parent="collisions/StaticBody"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.46717, 0.630545, -7.48866 )
+shape = SubResource( 6 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 12 )
