@@ -8,7 +8,7 @@
 [ext_resource path="res://material/texture/enemy/Material_024.material" type="Material" id=6]
 [ext_resource path="res://material/texture/enemy/Material_017.material" type="Material" id=7]
 
-[sub_resource type="ArrayMesh" id=16]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
 surfaces/0 = {
 "aabb": AABB( -0.876011, -0.385529, -0.325705, 2.0608, 4.76392, 1.63421 ),
@@ -83,7 +83,7 @@ surfaces/5 = {
 "vertex_count": 12
 }
 
-[sub_resource type="Skin" id=17]
+[sub_resource type="Skin" id=2]
 resource_name = "Skin"
 bind_count = 33
 bind/0/name = "mixamorig_hips"
@@ -186,7 +186,7 @@ bind/32/name = "mixamorig_right_toe_end"
 bind/32/bone = -1
 bind/32/pose = Transform( -99.8541, 5.36667, -0.689498, -1.071, -7.10137, 99.742, 5.30382, 99.6031, 7.14844, -34.689, -105.571, 290.012 )
 
-[sub_resource type="ArrayMesh" id=18]
+[sub_resource type="ArrayMesh" id=3]
 resource_name = "Cube001"
 surfaces/0 = {
 "aabb": AABB( -0.711338, -2.96937, -0.2397, 0.470806, 0.34483, 1.0887 ),
@@ -201,7 +201,7 @@ surfaces/0 = {
 "vertex_count": 186
 }
 
-[sub_resource type="ArrayMesh" id=19]
+[sub_resource type="ArrayMesh" id=4]
 resource_name = "Cube003"
 surfaces/0 = {
 "aabb": AABB( 0.595298, -2.96937, -0.240369, 0.458458, 0.34483, 1.0887 ),
@@ -216,7 +216,7 @@ surfaces/0 = {
 "vertex_count": 186
 }
 
-[sub_resource type="ArrayMesh" id=20]
+[sub_resource type="ArrayMesh" id=5]
 resource_name = "Cylinder003"
 surfaces/0 = {
 "aabb": AABB( 0.689373, -1.19684, 0.739113, 0.406681, 0.938454, 0.279099 ),
@@ -230,7 +230,7 @@ surfaces/0 = {
 "vertex_count": 116
 }
 
-[sub_resource type="ArrayMesh" id=21]
+[sub_resource type="ArrayMesh" id=6]
 resource_name = "Cylinder005"
 surfaces/0 = {
 "aabb": AABB( -1.50699, -1.10491, -0.208624, 0.765958, 1.44774, 1.36512 ),
@@ -1166,7 +1166,7 @@ rushSpeed = 2.3
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.875989, 0 )
 
 [node name="Armature" type="Spatial" parent="enemy"]
-transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, -5.85966 )
+transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="enemy/Armature"]
 transform = Transform( 1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0 )
@@ -1337,8 +1337,8 @@ bones/32/enabled = true
 bones/32/bound_children = [  ]
 
 [node name="Cube" type="MeshInstance" parent="enemy/Armature/Skeleton"]
-mesh = SubResource( 16 )
-skin = SubResource( 17 )
+mesh = SubResource( 1 )
+skin = SubResource( 2 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -1347,23 +1347,23 @@ material/4 = null
 material/5 = null
 
 [node name="Cube001" type="MeshInstance" parent="enemy/Armature/Skeleton"]
-mesh = SubResource( 18 )
-skin = SubResource( 17 )
+mesh = SubResource( 3 )
+skin = SubResource( 2 )
 material/0 = null
 
 [node name="Cube003" type="MeshInstance" parent="enemy/Armature/Skeleton"]
-mesh = SubResource( 19 )
-skin = SubResource( 17 )
+mesh = SubResource( 4 )
+skin = SubResource( 2 )
 material/0 = null
 
 [node name="Cylinder003" type="MeshInstance" parent="enemy/Armature/Skeleton"]
-mesh = SubResource( 20 )
-skin = SubResource( 17 )
+mesh = SubResource( 5 )
+skin = SubResource( 2 )
 material/0 = null
 
 [node name="Cylinder005" type="MeshInstance" parent="enemy/Armature/Skeleton"]
-mesh = SubResource( 21 )
-skin = SubResource( 17 )
+mesh = SubResource( 6 )
+skin = SubResource( 2 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemy"]
@@ -1372,7 +1372,7 @@ anims/run = SubResource( 8 )
 anims/slide = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.815167, 0.220045, 0.535802, 0.200002, -0.975065, 0.0961611, 0.543602, 0.0287739, -0.83885, 0.136425, -0.718684, 1.07394 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
 shape = SubResource( 10 )
 
 [node name="outside" type="Area" parent="."]
@@ -1398,5 +1398,5 @@ shape = SubResource( 14 )
 [node name="touchPoint" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="touchPoint"]
-transform = Transform( 0.815167, 0.220045, 0.535802, 0.200002, -0.975065, 0.0961611, 0.543602, 0.0287739, -0.83885, 0.136425, -0.718684, 1.07394 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
 shape = SubResource( 15 )

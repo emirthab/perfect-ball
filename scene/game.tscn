@@ -19,6 +19,7 @@
 [ext_resource path="res://geometry/traffic/traffic_light.fbx" type="PackedScene" id=17]
 [ext_resource path="res://geometry/traffic/street_light.fbx" type="PackedScene" id=18]
 [ext_resource path="res://geometry/traffic/cone.fbx" type="PackedScene" id=19]
+[ext_resource path="res://sprite/goal.tscn" type="PackedScene" id=20]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 80, 80 )
@@ -28,38 +29,33 @@ albedo_color = Color( 0.509804, 0.819608, 0.301961, 1 )
 uv1_scale = Vector3( 4, 4, 4 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 2.26398, 1, 1.83452 )
+extents = Vector3( 1, 14.0992, 28.7112 )
 
-[sub_resource type="SpatialMaterial" id=4]
-flags_transparent = true
-albedo_color = Color( 1, 0, 0, 0.133333 )
-
-[sub_resource type="CubeMesh" id=5]
-material = SubResource( 4 )
-size = Vector3( 4.528, 2, 3.67 )
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 2.00531, 0.540204, 0.258436 )
-
-[sub_resource type="BoxShape" id=7]
-extents = Vector3( 1.37103, 0.540204, 0.805303 )
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 14.0992, 11.9727 )
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 3.28846, 1.24244, 0.971435 )
+extents = Vector3( 2.00531, 0.540204, 0.258436 )
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.54259, 0.540204, 6.83917 )
+extents = Vector3( 1.37103, 0.540204, 0.805303 )
 
 [sub_resource type="BoxShape" id=10]
+extents = Vector3( 3.28846, 1.24244, 0.971435 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.54259, 0.540204, 6.83917 )
+
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 31.1464, 0.540204, 0.264589 )
 
-[sub_resource type="PanoramaSky" id=11]
+[sub_resource type="PanoramaSky" id=13]
 radiance_size = 0
 panorama = ExtResource( 9 )
 
-[sub_resource type="Environment" id=12]
+[sub_resource type="Environment" id=14]
 background_mode = 2
-background_sky = SubResource( 11 )
+background_sky = SubResource( 13 )
 background_sky_custom_fov = 112.9
 background_color = Color( 0.666667, 0.854902, 0.788235, 1 )
 ambient_light_color = Color( 0.611765, 0.611765, 0.611765, 1 )
@@ -80,26 +76,28 @@ use_collision = true
 mesh = SubResource( 1 )
 material = SubResource( 2 )
 
-[node name="finish" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198619, -19.9492 )
+[node name="deathArea" type="Area" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="finish"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801381, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="deathArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32313, 13.9463, 2.06923 )
 shape = SubResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="finish"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801381, 0 )
-mesh = SubResource( 5 )
-material/0 = null
+[node name="CollisionShape2" type="CollisionShape" parent="deathArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57286, 13.9463, 2.06923 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="deathArea"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.43896, 13.9463, 26.7997 )
+shape = SubResource( 4 )
 
 [node name="targetLook" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.9233 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23844, 0.908539, -0.37134 )
-speed = 1.7
-inactiveWaitTime = 0.6
-rushSpeed = 3.5
+speed = 1.9
+inactiveWaitTime = 0.8
+rushSpeed = 10.0
 
 [node name="enemy4" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.172, 0.908539, 7.19631 )
@@ -109,18 +107,18 @@ rushSpeed = 10.0
 
 [node name="enemy2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65378, 0.908539, -7.05354 )
-speed = 1.2
-inactiveWaitTime = 0.6
-rushSpeed = 2.8
+speed = 1.9
+inactiveWaitTime = 0.8
+rushSpeed = 10.0
 
 [node name="enemy3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73278, 0.908539, -4.33768 )
-speed = 1.2
-inactiveWaitTime = 0.6
-rushSpeed = 2.8
+speed = 1.9
+inactiveWaitTime = 0.8
+rushSpeed = 10.0
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.815727, 13.7978 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06981, 19.2794 )
 
 [node name="props" type="Spatial" parent="."]
 transform = Transform( 2.34708, 0, 0, 0, 2.34708, 0, 0, 0, 2.34708, 0, -0.0375619, 14.1979 )
@@ -659,31 +657,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41795, 0.279068, -6.92826 )
 
 [node name="cone_props" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77636, 0.630545, -3.61505 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="car_1" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.68358, 0.630545, -2.06823 )
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="car_3" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.60569, 1.27515, 0.57251 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="car_2" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.62587, 0.630545, 10.6418 )
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="car_4" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.128761, 0.630545, 24.3956 )
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="way_1" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.183, 0.631, 5.342 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="way_2" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.94144, 0.631, 5.342 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 12 )
+environment = SubResource( 14 )
+
+[node name="goal" parent="." instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0950999, -0.129283, -26.9112 )

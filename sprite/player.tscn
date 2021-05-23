@@ -23,7 +23,12 @@ radius = 0.3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908539, 0 )
 mass = 5.0
 physics_material_override = SubResource( 1 )
+contact_monitor = true
+can_sleep = false
+angular_damp = 1.0
 script = ExtResource( 2 )
+minShootPower = 200.0
+shootWaitTime = 0.5
 speedRatio = 0.3
 maxVelocity = 0.5
 
@@ -44,3 +49,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908539, 0 )
 
 [node name="Camera" type="Camera" parent="pivot"]
 transform = Transform( 1, 0, 0, 0, 0.990246, 0.139329, 0, -0.139329, 0.990246, 0, 4.83001, 10.7335 )
+
+[node name="RayCast" type="RayCast" parent="pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280283, 0 )
+enabled = true
+cast_to = Vector3( 0, -0.1, 0 )

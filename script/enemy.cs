@@ -89,7 +89,9 @@ public class enemy : KinematicBody
     {
         if (body == player && inactive == false)
         {
-            GetTree().ReloadCurrentScene();
+            Vector3 impulse = new Vector3(direction * 140F);
+            impulse.y = 30F;
+            player.ApplyImpulse(new Vector3(0,0,0),impulse);
         }
     }
 }
