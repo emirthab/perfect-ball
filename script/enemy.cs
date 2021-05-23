@@ -3,6 +3,10 @@ using System;
 
 public class enemy : KinematicBody
 {
+    [Export]
+    private float kickPowerUp;
+    [Export]
+    private float kickPowerHorizontal;
     private AnimationPlayer animPlayer;
     private bool die = false;
     private RigidBody player;
@@ -39,15 +43,14 @@ public class enemy : KinematicBody
         animPlayer.Play("idle");
     }
 
-
-    public override void _Process(float delta)
-    {
-
-            
-    }
-
     public override void _PhysicsProcess(float delta)
     {
+        if (!IsOnFloor())
+        {
+            //Gravity
+            this.MoveAndCollide(new Vector3(0,-0.1F,0));
+        }
+
         if (chase == true && die == false)
         {
             direction = player.GlobalTransform.origin - this.GlobalTransform.origin;
@@ -82,6 +85,7 @@ public class enemy : KinematicBody
     }
     public void inactiveTimeout()
     {
+        player.Set("touching",false);
         inactive = true;
     }
 
@@ -89,8 +93,9 @@ public class enemy : KinematicBody
     {
         if (body == player && inactive == false)
         {
-            Vector3 impulse = new Vector3(direction * 140F);
-            impulse.y = 30F;
+            player.Set("touching",true);
+            Vector3 impulse = new Vector3(direction * kickPowerHorizontal);
+            impulse.y = kickPowerUp;
             player.ApplyImpulse(new Vector3(0,0,0),impulse);
         }
     }

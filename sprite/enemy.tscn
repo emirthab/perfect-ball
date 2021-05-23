@@ -1152,12 +1152,14 @@ radius = 5.99559
 radius = 2.61585
 
 [sub_resource type="CapsuleShape" id=15]
-radius = 0.316597
-height = 1.02177
+radius = 0.554787
+height = 1.14858
 
 [node name="enemy" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5823, 0.908539, 0 )
 script = ExtResource( 2 )
+kickPowerUp = 1.0
+kickPowerHorizontal = 1.0
 speed = 1.0
 inactiveWaitTime = 0.5
 rushSpeed = 2.3
@@ -1166,7 +1168,7 @@ rushSpeed = 2.3
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.875989, 0 )
 
 [node name="Armature" type="Spatial" parent="enemy"]
-transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, 0 )
+transform = Transform( 0.01, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, -5.85966 )
 
 [node name="Skeleton" type="Skeleton" parent="enemy/Armature"]
 transform = Transform( 1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0 )
@@ -1372,7 +1374,7 @@ anims/run = SubResource( 8 )
 anims/slide = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
+transform = Transform( 0.870462, 0.253655, 0.421846, -0.15181, -0.676885, 0.720264, 0.46824, -0.691004, -0.550695, 0.183666, -0.308483, 0.0991656 )
 shape = SubResource( 10 )
 
 [node name="outside" type="Area" parent="."]
@@ -1398,5 +1400,5 @@ shape = SubResource( 14 )
 [node name="touchPoint" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="touchPoint"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.136388, 0.0519988 )
+transform = Transform( 0.870462, 0.253655, 0.421846, -0.15181, -0.676885, 0.720264, 0.46824, -0.691004, -0.550695, 0.183666, -0.308483, 0.0991656 )
 shape = SubResource( 15 )

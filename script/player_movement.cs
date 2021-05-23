@@ -3,6 +3,8 @@ using System;
 
 public class player_movement : RigidBody
 {
+    private bool touching = false;
+    private KinematicBody enemy;
     [Export]
     private float minShootPower;
     private bool canShoot = false;
@@ -39,7 +41,6 @@ public class player_movement : RigidBody
 
     public override void _PhysicsProcess(float delta)
     {
-        clampVelocity();
 
         //The result is calculated by subtracting the first vector from the current vector.
 
@@ -54,7 +55,13 @@ public class player_movement : RigidBody
         movement = movement.Rotated(new Vector3(0,1,0).Normalized(),pivotRotationY);
         movement.Normalized();
 
-        
+        if (rayCast.IsColliding())
+        {
+            if (((Node) rayCast.GetCollider()).Name != "enemy" && !touching)
+            {
+                clampVelocity();
+            }
+        }
         if (firstPos != new Vector2(0,0) && rayCast.IsColliding())
         {
             ApplyImpulse(new Vector3(0,0,0),movement);
@@ -83,6 +90,7 @@ public class player_movement : RigidBody
             {
                 if (canShoot == true &&  (currentPos.y - firstPos.y < - minShootPower))
                 {
+                    movement *= 2;
                     movement.y = 40F;
                     ApplyImpulse(new Vector3(0,0,0), movement);
                 }
@@ -107,7 +115,11 @@ public class player_movement : RigidBody
     }
     public void goalEntered(RigidBody body)
     {
-        GD.Print("denemee");
+        if (body == this)
+        {
+            Node win = ((PackedScene)ResourceLoader.Load("res://ui/scenes/win.tscn")).Instance();
+            AddChild(win);
+        }
     }
 
     public void shootTimeOut()
@@ -118,7 +130,8 @@ public class player_movement : RigidBody
     {
         if (body == this)
         {
-            GetTree().ReloadCurrentScene();
+            Node lose = ((PackedScene)ResourceLoader.Load("res://ui/scenes/lose.tscn")).Instance();
+            AddChild(lose);
         }
 
     }
