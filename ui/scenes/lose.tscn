@@ -11,30 +11,30 @@
 script = ExtResource( 6 )
 
 [node name="bg" type="Sprite" parent="."]
-position = Vector2( 304.624, 429.618 )
+position = Vector2( 368.124, 411.475 )
 scale = Vector2( 0.570749, 0.502677 )
 texture = ExtResource( 2 )
 
 [node name="table" type="Sprite" parent="."]
-position = Vector2( 289.815, 406.772 )
+position = Vector2( 353.315, 388.629 )
 scale = Vector2( 0.554343, 0.423246 )
 texture = ExtResource( 1 )
 
 [node name="star_1" type="Sprite" parent="."]
-position = Vector2( 291.997, 414.098 )
+position = Vector2( 355.497, 395.955 )
 scale = Vector2( 0.477963, 0.466968 )
 texture = ExtResource( 3 )
 
 [node name="header" type="Sprite" parent="."]
-position = Vector2( 297.836, 222.923 )
+position = Vector2( 361.336, 204.78 )
 scale = Vector2( 0.470105, 0.550512 )
 texture = ExtResource( 4 )
 
 [node name="restart_button" type="Button" parent="."]
-margin_left = 247.222
-margin_top = 612.506
-margin_right = 339.222
-margin_bottom = 704.506
+margin_left = 310.722
+margin_top = 594.363
+margin_right = 402.721
+margin_bottom = 686.363
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
