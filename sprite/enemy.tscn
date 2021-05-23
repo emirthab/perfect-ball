@@ -1158,8 +1158,8 @@ height = 1.14858
 [node name="enemy" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5823, 0.908539, 0 )
 script = ExtResource( 2 )
-kickPowerUp = 1.0
-kickPowerHorizontal = 1.0
+kickPowerUp = 140.0
+kickPowerHorizontal = 150.0
 speed = 1.0
 inactiveWaitTime = 0.5
 rushSpeed = 2.3

@@ -49,16 +49,16 @@ extents = Vector3( 0.54259, 0.540204, 6.83917 )
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 31.1464, 0.540204, 0.264589 )
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.54259, 0.540204, 3.84782 )
 
-[sub_resource type="PanoramaSky" id=10]
+[sub_resource type="PanoramaSky" id=11]
 radiance_size = 0
 panorama = ExtResource( 4 )
 
-[sub_resource type="Environment" id=11]
+[sub_resource type="Environment" id=12]
 background_mode = 2
-background_sky = SubResource( 10 )
+background_sky = SubResource( 11 )
 background_sky_custom_fov = 112.9
 background_color = Color( 0.666667, 0.854902, 0.788235, 1 )
 ambient_light_color = Color( 0.611765, 0.611765, 0.611765, 1 )
@@ -746,22 +746,22 @@ shape = SubResource( 9 )
 
 [node name="cone_4" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.27346, 0.630545, -30.6005 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="cone_5" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.51734, 0.630545, -30.6005 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="cone_6" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 7.04721, 0.630545, -29.5675 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="cone_7" type="CollisionShape" parent="collisions/StaticBody"]
 transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -6.81585, 0.630545, -29.5675 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 11 )
+environment = SubResource( 12 )
 
 [node name="goal" parent="." instance=ExtResource( 16 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0950999, -0.129283, -26.9112 )
