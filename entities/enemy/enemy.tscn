@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://o44psmqo2iv2"]
+
+[ext_resource type="PackedScene" uid="uid://mgjp8ydgexh8" path="res://assets/geometry/enemy.glb" id="1_kanan"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4matr"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_arsjp"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_coard"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_18ild"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wsitn"]
+xfade_time = 0.1
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8bnh4"]
+xfade_time = 0.1
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dd15q"]
+xfade_time = 0.1
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c7f6j"]
+states/End/position = Vector2(923, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_4matr")
+states/Idle/position = Vector2(326, 100)
+states/Run/node = SubResource("AnimationNodeAnimation_arsjp")
+states/Run/position = Vector2(456, 100)
+states/Slide/node = SubResource("AnimationNodeAnimation_coard")
+states/Slide/position = Vector2(668, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_18ild"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_wsitn"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_8bnh4"), "Run", "Slide", SubResource("AnimationNodeStateMachineTransition_dd15q")]
+graph_offset = Vector2(-553, -50)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_b3gmh"]
+
+[node name="Enemy" type="Node3D"]
+
+[node name="enemy" parent="." instance=ExtResource("1_kanan")]
+
+[node name="Skeleton3D" parent="enemy/Armature" index="0"]
+bones/1/position = Vector3(-0.254222, 3.27231, 3.69693)
+bones/1/rotation = Quaternion(-0.0846802, 0.352293, -0.2952, 0.884068)
+bones/2/rotation = Quaternion(0.159415, -0.148047, 0.0499636, 0.974768)
+bones/3/rotation = Quaternion(0.0214944, -0.0382368, -0.00389542, 0.99903)
+bones/4/rotation = Quaternion(0.0215946, -0.0379584, -0.00314224, 0.999041)
+bones/5/rotation = Quaternion(0.0852426, 0.0115168, -0.00352166, 0.996287)
+bones/6/rotation = Quaternion(0.0142993, 0.0108583, 0.11213, 0.993531)
+bones/8/rotation = Quaternion(-0.664339, -0.313531, 0.580841, -0.350679)
+bones/9/position = Vector3(4.35477e-06, 83.8384, -1.44578e-05)
+bones/9/rotation = Quaternion(-0.00637837, 0.0912614, 0.219915, 0.97122)
+bones/10/position = Vector3(3.80186e-06, 147.18, 2.6241e-05)
+bones/10/rotation = Quaternion(0.0157263, 0.000174177, 0.124261, 0.992125)
+bones/12/rotation = Quaternion(0.4762, -0.53254, 0.391164, 0.580195)
+bones/13/position = Vector3(-8.71495e-07, 83.8384, 1.42959e-05)
+bones/13/rotation = Quaternion(-0.107995, 0.306977, 0.132544, 0.936234)
+bones/14/position = Vector3(-5.37511e-06, 147.159, 4.22297e-05)
+bones/14/rotation = Quaternion(0.0129391, 0.000251826, -0.107046, 0.99417)
+bones/16/rotation = Quaternion(0.18583, 0.342204, 0.920992, 0.0117516)
+bones/17/rotation = Quaternion(-0.805289, 0.0033928, -0.124421, 0.57967)
+bones/18/position = Vector3(-2.30536e-07, 113.589, -3.59012e-06)
+bones/18/rotation = Quaternion(0.624866, 0.132014, -0.15815, 0.753062)
+bones/19/position = Vector3(-1.16193e-05, 56.1441, 1.40994e-05)
+bones/19/rotation = Quaternion(-0.00953528, -0.000655891, -0.0267717, 0.999596)
+bones/21/rotation = Quaternion(0.183928, 0.661035, 0.724506, 0.0655283)
+bones/22/rotation = Quaternion(-0.65647, -0.101171, 0.0295282, 0.746953)
+bones/23/position = Vector3(6.56078e-06, 113.518, -1.52736e-05)
+bones/23/rotation = Quaternion(0.651857, -0.039045, -0.154152, 0.741482)
+bones/24/position = Vector3(-2.34179e-06, 56.5429, 1.01588e-05)
+bones/24/rotation = Quaternion(0.327735, 0.00464845, 0.00587539, 0.94474)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_c7f6j")
+anim_player = NodePath("../enemy/AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_b3gmh")
+
+[editable path="enemy"]

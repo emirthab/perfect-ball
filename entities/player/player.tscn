@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dygd6db6rvm2q"]
+
+[ext_resource type="Script" path="res://entities/player/player_movement.gd" id="1_jj0jc"]
+[ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s7egx"]
+friction = 10.0
+rough = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nchoa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0yagt"]
+albedo_texture = ExtResource("2_jlr1g")
+
+[sub_resource type="SphereMesh" id="SphereMesh_0pl4i"]
+
+[node name="Player" type="Node3D"]
+
+[node name="Body" type="RigidBody3D" parent="."]
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_s7egx")
+contact_monitor = true
+can_sleep = false
+linear_damp = 5.0
+angular_damp_mode = 1
+angular_damp = 2.0
+script = ExtResource("1_jj0jc")
+min_shoot_power = 200.0
+shoot_wait_time = 0.5
+speed_ratio = 0.1
+max_velocity = 0.1
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Body"]
+shape = SubResource("SphereShape3D_nchoa")
+
+[node name="Model" type="MeshInstance3D" parent="Body"]
+material_override = SubResource("StandardMaterial3D_0yagt")
+mesh = SubResource("SphereMesh_0pl4i")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body"]
+remote_path = NodePath("../../Pivot")
+update_rotation = false
+update_scale = false
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.948975, 0.315351, 0, -0.315351, 0.948975, 0, 8.70269, 17.2844)
+current = true
+
+[node name="RayCast" type="RayCast3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.469085, 0)
+target_position = Vector3(0, -0.1, 0)
