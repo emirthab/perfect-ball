@@ -1,16 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://hhy1uorqp3id"]
 
+[ext_resource type="Material" uid="uid://d0hicg0fjb7jg" path="res://addons/kenney_prototype_tools/materials/green/material_08.tres" id="1_i14n3"]
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="1_te5wh"]
 [ext_resource type="PackedScene" uid="uid://cwhs6yyyhv826" path="res://entities/goal/goal.tscn" id="2_0k5t1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4x1ch"]
-albedo_color = Color(0.67451, 0.968627, 0.454902, 1)
 
 [node name="Test" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.152564, 0)
-material_override = SubResource("StandardMaterial3D_4x1ch")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118184, 0)
+material_override = ExtResource("1_i14n3")
 use_collision = true
 size = Vector3(151.559, 0.293082, 222.562)
 
