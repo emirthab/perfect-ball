@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://2elsr220o8hx"]
+
+[ext_resource type="PackedScene" uid="uid://baey44tax0rxi" path="res://assets/geometry/terrains/traffic_cone.glb" id="1_qirmd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dm3na"]
+points = PackedVector3Array(-1, -0.044284, 0, -0.707126, -0.044284, -0.707126, -0.707126, -0.044284, 0.70693, -0.127839, 2.402, 0, -0.0904464, 2.402, -0.0904464, 0, -0.044284, -1, -0.000195742, 2.402, -0.127839, -0.000195742, -0.044284, 1, -0.0904464, 2.402, 0.0902506, -0.0957322, 2.44985, 0, -0.0677369, 2.44985, -0.0677369, 0.70693, -0.044284, -0.707126, 0.0902506, 2.402, -0.0904464, 0, 2.44985, -0.0957322, 0.70693, -0.044284, 0.70693, 0.0902506, 2.402, 0.0902506, -0.000195742, 2.402, 0.127643, -0.0677369, 2.44985, 0.0675411, 1, -0.044284, 0, 0.0675411, 2.44985, -0.0677369, 0.127643, 2.402, 0, 0.0955365, 2.44985, 0, 0.0675411, 2.44985, 0.0675411, 0, 2.44985, 0.0955365)
+
+[node name="traffic_cone" type="StaticBody3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.0807058, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_dm3na")
+
+[node name="traffic_cone" parent="." instance=ExtResource("1_qirmd")]

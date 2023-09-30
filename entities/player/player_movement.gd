@@ -47,7 +47,7 @@ func _physics_process(delta : float):
 	
 	var pivot_rotation_y : float = pivot.rotation.y
 	
-	movement = Vector3(pos_x, -2, pos_y)
+	movement = Vector3(pos_x, 0, pos_y)
 	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot_rotation_y)
 	movement.normalized()
 	
