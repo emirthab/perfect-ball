@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cttvy4vrtvabu"]
+
+[ext_resource type="PackedScene" uid="uid://hlcs7lfff4qv" path="res://addons/kaykit_city_builder_bits/Assets/gltf/base.gltf" id="1_ikuk4"]
+[ext_resource type="Texture2D" uid="uid://d2vtenbwhfj6b" path="res://addons/kaykit_city_builder_bits/Assets/gltf/citybits_texture.png" id="2_p52xs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bste4"]
+size = Vector3(2.00128, 0.111452, 2.002)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6k76"]
+resource_name = "citybits_texture"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.356863, 0.541176, 0.345098, 1)
+albedo_texture = ExtResource("2_p52xs")
+roughness = 0.4
+
+[node name="base" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0450847, 0)
+shape = SubResource("BoxShape3D_bste4")
+
+[node name="base" parent="." instance=ExtResource("1_ikuk4")]
+
+[node name="base2" parent="base" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_o6k76")
+
+[editable path="base"]

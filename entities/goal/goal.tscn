@@ -2,16 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://covyw2knjbpib" path="res://assets/geometry/soccer_goal.glb" id="1_0kj4f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vk2dp"]
-size = Vector3(0.344588, 3.74621, 6.46578)
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5ssa"]
+size = Vector3(5.49727, 0.395092, 6.5856)
 
-[node name="Goal" type="Node3D"]
+[node name="Goal" type="StaticBody3D"]
 
 [node name="soccer_goal" parent="." instance=ExtResource("1_0kj4f")]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.0135132, 0, 0, 0)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.0135132, 1.17824, 0, 0)
 
 [node name="Area" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0694897, 1.88203, 0)
-shape = SubResource("BoxShape3D_vk2dp")
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2969, 1.84704, 3.47452)
+depth = 0.5
+polygon = PackedVector2Array(-1.30118, -1.5848, 0.493614, -0.418029, 2.6838, 2.32217, 2.68474, 0.0172659, 2.69256, -1.80695, -1.3841, -1.86582)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2969, 1.84704, -3.45924)
+depth = 0.5
+polygon = PackedVector2Array(-1.30118, -1.5848, 0.493614, -0.418029, 2.6838, 2.32217, 2.68474, 0.0172659, 2.69256, -1.80695, -1.3841, -1.86582)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.706934, -0.70728, 0, 0.70728, 0.706934, 0, 0, 0, 1, -0.64948, 1.94877, 0)
+shape = SubResource("BoxShape3D_n5ssa")

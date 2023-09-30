@@ -1,0 +1,275 @@
+[gd_scene load_steps=21 format=3 uid="uid://otywu3l8r4v3"]
+
+[ext_resource type="Material" uid="uid://dm157s57mfhfe" path="res://addons/kenney_prototype_tools/materials/dark/material_02.tres" id="1_uxdvw"]
+[ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
+[ext_resource type="PackedScene" uid="uid://cwhs6yyyhv826" path="res://entities/goal/goal.tscn" id="3_venmi"]
+[ext_resource type="Texture2D" uid="uid://bw4mar8g00hfu" path="res://assets/textures/sky.jpg" id="4_edd7u"]
+[ext_resource type="PackedScene" uid="uid://ch8nbiypv08bt" path="res://entities/props/road_straight.tscn" id="5_td1h6"]
+[ext_resource type="PackedScene" uid="uid://8yefyqk56022" path="res://entities/props/car_police.tscn" id="6_q0p1j"]
+[ext_resource type="PackedScene" uid="uid://dn8poinbgsysb" path="res://entities/props/terrain/tree_1.tscn" id="7_bdg8h"]
+[ext_resource type="PackedScene" uid="uid://cttvy4vrtvabu" path="res://entities/props/road_0.tscn" id="8_b3s8b"]
+[ext_resource type="PackedScene" uid="uid://bppdad8uxgmav" path="res://entities/props/terrain/tree_2.tscn" id="8_o1ml0"]
+[ext_resource type="PackedScene" uid="uid://bj8n6nttia1mw" path="res://entities/props/road_corner.tscn" id="8_sotpi"]
+[ext_resource type="PackedScene" uid="uid://c0sts7mfb6dr7" path="res://entities/props/road_tsplit.tscn" id="9_ytxrq"]
+[ext_resource type="PackedScene" uid="uid://n44w2s7ric5e" path="res://entities/props/building_1.tscn" id="11_wfax5"]
+[ext_resource type="PackedScene" uid="uid://bpfux807vklir" path="res://entities/props/building_2.tscn" id="12_utkw5"]
+[ext_resource type="PackedScene" uid="uid://cxqxogsf7kwgc" path="res://entities/props/building_3.tscn" id="13_6bxyr"]
+[ext_resource type="PackedScene" uid="uid://b4i8amuehc04d" path="res://entities/props/bush_1.tscn" id="15_wktm2"]
+[ext_resource type="PackedScene" uid="uid://2elsr220o8hx" path="res://entities/props/traffic_cone.tscn" id="16_clinp"]
+[ext_resource type="PackedScene" uid="uid://bhsayfpvyd03p" path="res://entities/props/trafficlight_a.tscn" id="17_0stcb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qst5x"]
+panorama = ExtResource("4_edd7u")
+
+[sub_resource type="Sky" id="Sky_indyu"]
+sky_material = SubResource("PanoramaSkyMaterial_qst5x")
+
+[sub_resource type="Environment" id="Environment_2gkn7"]
+background_mode = 2
+sky = SubResource("Sky_indyu")
+sky_custom_fov = 112.7
+sky_rotation = Vector3(3.48787e-16, 3.39641, 3.48787e-16)
+ambient_light_source = 2
+ambient_light_color = Color(0.654902, 0.698039, 0.890196, 1)
+
+[node name="Test" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118184, 0)
+material_override = ExtResource("1_uxdvw")
+use_collision = true
+size = Vector3(151.559, 0.293082, 222.562)
+
+[node name="Player" parent="." instance=ExtResource("2_j65jg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297432, 1.23703, 22.2527)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989283, 0.0805799, 0.121766, -0.140943, 0.744863, 0.652161, -0.038148, -0.662333, 0.748237, 0, 9.86703, 0)
+shadow_enabled = true
+
+[node name="DeathArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="Goal" parent="." instance=ExtResource("3_venmi")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0, 0.721077, -30.0911)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2gkn7")
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.00658989, 1.90735e-06, 0.0654526)
+
+[node name="car_police" parent="Props" instance=ExtResource("6_q0p1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.703883, 0.130901, 0)
+
+[node name="car_police2" parent="Props" instance=ExtResource("6_q0p1j")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.29612, 0.130901, -2)
+
+[node name="roads" type="Node3D" parent="Props"]
+
+[node name="road_straight" parent="Props/roads" instance=ExtResource("5_td1h6")]
+
+[node name="road_straight3" parent="Props/roads" instance=ExtResource("5_td1h6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -2)
+
+[node name="road_straight5" parent="Props/roads" instance=ExtResource("5_td1h6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -2)
+
+[node name="road_straight2" parent="Props/roads" instance=ExtResource("5_td1h6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.00028)
+
+[node name="road_straight6" parent="Props/roads" instance=ExtResource("5_td1h6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.00028)
+
+[node name="base" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="base2" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="base3" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="base4" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.00938211, 0)
+
+[node name="base5" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, -0.00938211, -4)
+
+[node name="base7" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.00454569, -4)
+
+[node name="base8" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.00454569, -6)
+
+[node name="base10" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.00454569, -6)
+
+[node name="base11" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.00454569, -8)
+
+[node name="base12" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.00454569, -8)
+
+[node name="base14" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.00454569, -8)
+
+[node name="base15" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72181e-07, -0.00454569, -8)
+
+[node name="base9" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00454569, -6)
+
+[node name="base13" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00454569, -8)
+
+[node name="base6" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.00938211, 2)
+
+[node name="base16" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="base17" parent="Props/roads" instance=ExtResource("8_b3s8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.00938211, 4)
+
+[node name="road_corner" parent="Props/roads" instance=ExtResource("8_sotpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="road_straight4" parent="Props/roads" instance=ExtResource("5_td1h6")]
+transform = Transform3D(0.00174843, -0.00256792, -0.999995, -8.99478e-06, 0.999997, -0.00256794, 0.999999, 1.34952e-05, 0.0017484, 1.99697, 0.00152605, -4)
+
+[node name="road_straight7" parent="Props/roads" instance=ExtResource("5_td1h6")]
+transform = Transform3D(0.00174843, -0.00256792, -0.999995, -8.99478e-06, 0.999997, -0.00256794, 0.999999, 1.34952e-05, 0.0017484, 3.99697, 0.00152605, -4)
+
+[node name="Node3D" parent="Props/roads" instance=ExtResource("9_ytxrq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2)
+
+[node name="trees" type="Node3D" parent="Props"]
+
+[node name="tree_1" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50094, 0.0957655, 1.0162)
+
+[node name="tree_2" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.50396, 0.0161004, 2.08854)
+
+[node name="tree_3" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50094, 0.0957655, -1.1838)
+
+[node name="tree_4" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.50396, 0.0161004, -0.111462)
+
+[node name="tree_5" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.50396, 0.0161004, -2.41146)
+
+[node name="tree_6" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39906, 0.0957655, 1.24208)
+
+[node name="tree_7" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.39604, 0.0161004, 2.31442)
+
+[node name="tree_8" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5297, 0.0957655, -2.61142)
+
+[node name="tree_9" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.59081, 0.0161004, -1.839)
+
+[node name="tree_10" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.39604, 0.0161004, -3.32775)
+
+[node name="tree_12" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.238105, 0, 0.1825, 0, 0.3, 0, -0.1825, 0, 0.238105, -2.33201, 0.103669, -5.22634)
+
+[node name="tree_11" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(1, 0, 0, 0, 0.999961, 0.00883125, 0, -0.00883125, 0.999961, -1.11672, 0.0787095, -5.24427)
+
+[node name="tree_13" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.180478, 0, -0.239641, 0, 0.3, 0, 0.239641, 0, 0.180478, -1.63133, 0.100462, -5.41267)
+
+[node name="tree_14" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(0.603152, 0, -0.797626, 0, 1, 0, 0.797626, 0, 0.603152, -1.6096, 0.0869046, -4.7083)
+
+[node name="tree_15" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.238105, 0, 0.1825, 0, 0.3, 0, -0.1825, 0, 0.238105, 3.46799, 0.103669, -5.62634)
+
+[node name="tree_16" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(1, 0, 0, 0, 0.999961, 0.00883125, 0, -0.00883125, 0.999961, 4.68328, 0.0787095, -5.64427)
+
+[node name="tree_17" parent="Props/trees" instance=ExtResource("8_o1ml0")]
+transform = Transform3D(0.180478, 0, -0.239641, 0, 0.3, 0, 0.239641, 0, 0.180478, 4.16867, 0.100462, -5.81267)
+
+[node name="tree_18" parent="Props/trees" instance=ExtResource("7_bdg8h")]
+transform = Transform3D(0.603152, 0, -0.797626, 0, 1, 0, 0.797626, 0, 0.603152, 4.1904, 0.0869046, -5.1083)
+
+[node name="buildings" type="Node3D" parent="Props"]
+
+[node name="building_1" parent="Props/buildings" instance=ExtResource("11_wfax5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="building_4" parent="Props/buildings" instance=ExtResource("11_wfax5")]
+transform = Transform3D(2.38419e-08, 0, 1, 0, 1, 0, -1, 0, 2.38419e-08, -2.9, -0.0004807, -0.0707316)
+
+[node name="building_5" parent="Props/buildings" instance=ExtResource("11_wfax5")]
+transform = Transform3D(6.35809e-08, 0, -1, 0, 1, 0, 1, 0, 6.35809e-08, 3.3, 0.0159857, -1.97073)
+
+[node name="building_2" parent="Props/buildings" instance=ExtResource("12_utkw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="building_7" parent="Props/buildings" instance=ExtResource("12_utkw5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.3, 0.0164664, 2)
+
+[node name="building_3" parent="Props/buildings" instance=ExtResource("13_6bxyr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.9, 0, -3.99488)
+
+[node name="building_8" parent="Props/buildings" instance=ExtResource("13_6bxyr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.9, 0, 2.00512)
+
+[node name="building_6" parent="Props/buildings" instance=ExtResource("13_6bxyr")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.3, 0.0164664, 0.00512199)
+
+[node name="environment" type="Node3D" parent="Props"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.20982, 0.0467048, 1.77479)
+
+[node name="bush_1" parent="Props/environment" instance=ExtResource("15_wktm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520159, 0, -7.43513)
+
+[node name="bush_4" parent="Props/environment" instance=ExtResource("15_wktm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47984, 0, -4.43513)
+
+[node name="bush_5" parent="Props/environment" instance=ExtResource("15_wktm2")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 15.1437, 0, -23.4351)
+
+[node name="bush_3" parent="Props/environment" instance=ExtResource("15_wktm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520159, 0, -0.101799)
+
+[node name="bush_2" parent="Props/environment" instance=ExtResource("15_wktm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520159, 0, -19.0822)
+
+[node name="traffic_cone" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.4925, 0.0807058, 5.19897)
+
+[node name="traffic_cone2" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.4925, 0.0807058, 5.19897)
+
+[node name="traffic_cone3" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.4925, 0.0807058, 5.19897)
+
+[node name="traffic_cone4" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.49251, 0.0807058, 5.19897)
+
+[node name="traffic_cone5" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -1.53654, 0.0807058, -11.0278)
+
+[node name="traffic_cone6" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -1.53654, 0.0807058, -12.0278)
+
+[node name="traffic_cone7" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -1.53654, 0.0807058, -13.0278)
+
+[node name="traffic_cone8" parent="Props/environment" instance=ExtResource("16_clinp")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -1.53654, 0.0807058, -14.0278)
+
+[node name="trafficlight_A" parent="Props/environment" instance=ExtResource("17_0stcb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.63956, -0.0293105, -15.2539)
+
+[node name="trafficlight_A2" parent="Props/environment" instance=ExtResource("17_0stcb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6.71073, -0.0293105, -15.2539)

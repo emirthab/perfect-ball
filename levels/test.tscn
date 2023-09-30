@@ -22,7 +22,7 @@ sky_rotation = Vector3(3.48787e-16, 3.39641, 3.48787e-16)
 ambient_light_source = 2
 ambient_light_color = Color(0.654902, 0.698039, 0.890196, 1)
 
-[node name="Test" type="Node3D"]
+[node name="Test2" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118184, 0)
