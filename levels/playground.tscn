@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://otywu3l8r4v3"]
+[gd_scene load_steps=21 format=3 uid="uid://b0pov3i1k488q"]
 
 [ext_resource type="Material" uid="uid://dm157s57mfhfe" path="res://addons/kenney_prototype_tools/materials/dark/material_02.tres" id="1_uxdvw"]
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
@@ -44,7 +44,7 @@ size = Vector3(151.559, 0.293082, 222.562)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297432, 1.23703, 22.2527)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.989283, 0.0805799, 0.121766, -0.140943, 0.744863, 0.652161, -0.038148, -0.662333, 0.748237, 0, 9.86703, 0)
+transform = Transform3D(0.74246, -0.356228, 0.567323, -0.286977, 0.596105, 0.749869, -0.605308, -0.719556, 0.340355, 0, 9.86703, 0)
 shadow_enabled = true
 
 [node name="DeathArea" type="Area3D" parent="."]
