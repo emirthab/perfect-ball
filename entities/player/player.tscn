@@ -16,7 +16,7 @@ albedo_texture = ExtResource("2_jlr1g")
 
 [node name="Player" type="Node3D"]
 
-[node name="Body" type="RigidBody3D" parent="."]
+[node name="Body" type="RigidBody3D" parent="." groups=["player"]]
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_s7egx")
 contact_monitor = true

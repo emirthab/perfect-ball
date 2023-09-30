@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0pov3i1k488q"]
+[gd_scene load_steps=22 format=3 uid="uid://b0pov3i1k488q"]
 
 [ext_resource type="Material" uid="uid://dm157s57mfhfe" path="res://addons/kenney_prototype_tools/materials/dark/material_02.tres" id="1_uxdvw"]
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b4i8amuehc04d" path="res://entities/props/bush_1.tscn" id="15_wktm2"]
 [ext_resource type="PackedScene" uid="uid://2elsr220o8hx" path="res://entities/props/traffic_cone.tscn" id="16_clinp"]
 [ext_resource type="PackedScene" uid="uid://bhsayfpvyd03p" path="res://entities/props/trafficlight_a.tscn" id="17_0stcb"]
+[ext_resource type="PackedScene" uid="uid://o44psmqo2iv2" path="res://entities/enemy/enemy.tscn" id="18_5l1dg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qst5x"]
 panorama = ExtResource("4_edd7u")
@@ -273,3 +274,6 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.63956, -0.0293105, -15.2539
 
 [node name="trafficlight_A2" parent="Props/environment" instance=ExtResource("17_0stcb")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6.71073, -0.0293105, -15.2539)
+
+[node name="Enemy" parent="." instance=ExtResource("18_5l1dg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728992, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hhy1uorqp3id"]
+[gd_scene load_steps=12 format=3 uid="uid://hhy1uorqp3id"]
 
 [ext_resource type="Material" uid="uid://06vclpgwwyc8" path="res://addons/kenney_prototype_tools/materials/dark/material_07.tres" id="1_kcg4e"]
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="1_te5wh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://dn16yhnqtqh7i" path="res://addons/kenney_prototype_tools/materials/orange/material_02.tres" id="5_tv2fq"]
 [ext_resource type="Material" uid="uid://c4m3pqbl84uhl" path="res://addons/kenney_prototype_tools/materials/purple/material_02.tres" id="6_vgcfa"]
 [ext_resource type="Material" uid="uid://b7kc8jfs4fowj" path="res://addons/kenney_prototype_tools/materials/green/material_02.tres" id="7_5q31q"]
+[ext_resource type="PackedScene" uid="uid://o44psmqo2iv2" path="res://entities/enemy/enemy.tscn" id="8_wuvnd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qst5x"]
 panorama = ExtResource("4_kuxks")
@@ -31,7 +32,7 @@ use_collision = true
 size = Vector3(151.559, 0.293082, 222.562)
 
 [node name="Player" parent="." instance=ExtResource("1_te5wh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297432, 0.806544, 22.2527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20779, 0.806544, 26.8413)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.989283, 0.0805799, 0.121766, -0.140943, 0.744863, 0.652161, -0.038148, -0.662333, 0.748237, 0, 9.86703, 0)
@@ -63,3 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 0.991932, -0.12677, 0, 0.12677, 0.991932, -0
 material_override = ExtResource("7_5q31q")
 use_collision = true
 size = Vector3(3, 3, 10.5829)
+
+[node name="Enemy" parent="." instance=ExtResource("8_wuvnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21514, 0.0264048, 14.3872)

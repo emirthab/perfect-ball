@@ -11,7 +11,6 @@ extends RigidBody3D
 @onready var death_area : Area3D = get_tree().current_scene.get_node('DeathArea')
 @onready var goal_area : Area3D = get_tree().current_scene.get_node('Goal/Area')
 
-var touching : bool = false
 var enemy : CharacterBody3D
 var can_shoot : bool
 var shoot_timer : Timer = Timer.new()
@@ -70,7 +69,6 @@ func _input(event : InputEvent):
 			can_shoot = true
 			shoot_timer.start()
 			first_pos = event.position
-			
 			
 		if event.button_index == 1 and not event.is_pressed():
 			if can_shoot and (current_pos.y - first_pos.y < -min_shoot_power):
