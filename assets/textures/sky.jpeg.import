@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drp5agnr4ic6n"
-path.s3tc="res://.godot/imported/texture_11.png-bd0989308a8d1944e2aa8025c34df09a.s3tc.ctex"
-path.etc2="res://.godot/imported/texture_11.png-bd0989308a8d1944e2aa8025c34df09a.etc2.ctex"
+uid="uid://dvs8fpob5lvj0"
+path.s3tc="res://.godot/imported/sky.jpeg-297f8a79353ffe37e8fc854be715b649.s3tc.ctex"
+path.etc2="res://.godot/imported/sky.jpeg-297f8a79353ffe37e8fc854be715b649.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/kenney_prototype_tools/textures/purple/texture_11.png"
-dest_files=["res://.godot/imported/texture_11.png-bd0989308a8d1944e2aa8025c34df09a.s3tc.ctex", "res://.godot/imported/texture_11.png-bd0989308a8d1944e2aa8025c34df09a.etc2.ctex"]
+source_file="res://assets/textures/sky.jpeg"
+dest_files=["res://.godot/imported/sky.jpeg-297f8a79353ffe37e8fc854be715b649.s3tc.ctex", "res://.godot/imported/sky.jpeg-297f8a79353ffe37e8fc854be715b649.etc2.ctex"]
 
 [params]
 

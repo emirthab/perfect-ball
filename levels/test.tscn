@@ -1,14 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://hhy1uorqp3id"]
+[gd_scene load_steps=11 format=3 uid="uid://hhy1uorqp3id"]
 
-[ext_resource type="Material" uid="uid://d0hicg0fjb7jg" path="res://addons/kenney_prototype_tools/materials/green/material_08.tres" id="1_i14n3"]
+[ext_resource type="Material" uid="uid://06vclpgwwyc8" path="res://addons/kenney_prototype_tools/materials/dark/material_07.tres" id="1_kcg4e"]
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="1_te5wh"]
 [ext_resource type="PackedScene" uid="uid://cwhs6yyyhv826" path="res://entities/goal/goal.tscn" id="2_0k5t1"]
+[ext_resource type="Texture2D" uid="uid://bw4mar8g00hfu" path="res://assets/textures/sky.jpg" id="4_kuxks"]
+[ext_resource type="Material" uid="uid://dn16yhnqtqh7i" path="res://addons/kenney_prototype_tools/materials/orange/material_02.tres" id="5_tv2fq"]
+[ext_resource type="Material" uid="uid://c4m3pqbl84uhl" path="res://addons/kenney_prototype_tools/materials/purple/material_02.tres" id="6_vgcfa"]
+[ext_resource type="Material" uid="uid://b7kc8jfs4fowj" path="res://addons/kenney_prototype_tools/materials/green/material_02.tres" id="7_5q31q"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qst5x"]
+panorama = ExtResource("4_kuxks")
+
+[sub_resource type="Sky" id="Sky_indyu"]
+sky_material = SubResource("PanoramaSkyMaterial_qst5x")
+
+[sub_resource type="Environment" id="Environment_2gkn7"]
+background_mode = 2
+sky = SubResource("Sky_indyu")
+sky_custom_fov = 112.7
+sky_rotation = Vector3(3.48787e-16, 3.39641, 3.48787e-16)
+ambient_light_source = 2
+ambient_light_color = Color(0.654902, 0.698039, 0.890196, 1)
 
 [node name="Test" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118184, 0)
-material_override = ExtResource("1_i14n3")
+material_override = ExtResource("1_kcg4e")
 use_collision = true
 size = Vector3(151.559, 0.293082, 222.562)
 
@@ -16,7 +34,7 @@ size = Vector3(151.559, 0.293082, 222.562)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297432, 0.806544, 22.2527)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.731008, 0.682368, 0, -0.682368, 0.731008, 0, 9.86703, 0)
+transform = Transform3D(0.989283, 0.0805799, 0.121766, -0.140943, 0.744863, 0.652161, -0.038148, -0.662333, 0.748237, 0, 9.86703, 0)
 shadow_enabled = true
 
 [node name="DeathArea" type="Area3D" parent="."]
@@ -24,3 +42,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
 [node name="Goal" parent="." instance=ExtResource("2_0k5t1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0879364, -0.00602622, -22.4749)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2gkn7")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0212, 1.52836, 11.3636)
+material_override = ExtResource("5_tv2fq")
+use_collision = true
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6026, 1.52836, 3.98778)
+material_override = ExtResource("6_vgcfa")
+use_collision = true
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991932, -0.12677, 0, 0.12677, 0.991932, -0.687554, -0.813116, 3.98778)
+material_override = ExtResource("7_5q31q")
+use_collision = true
+size = Vector3(3, 3, 10.5829)

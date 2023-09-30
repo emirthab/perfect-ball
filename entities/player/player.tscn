@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s7egx"]
-friction = 10.0
 rough = true
+bounce = 0.44
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nchoa"]
 

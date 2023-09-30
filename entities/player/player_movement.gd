@@ -47,13 +47,12 @@ func _physics_process(delta : float):
 	
 	var pivot_rotation_y : float = pivot.rotation.y
 	
-	movement = Vector3(pos_x, 0, pos_y)
+	movement = Vector3(pos_x, -2, pos_y)
 	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot_rotation_y)
 	movement.normalized()
 	
-	movement = movement.limit_length(20)
-	
 	if raycast.is_colliding():
+		movement = movement.limit_length(10)
 		angular_damp = 2
 		linear_damp = 5
 		if first_pos != Vector2(0, 0):
@@ -75,7 +74,7 @@ func _input(event : InputEvent):
 			
 		if event.button_index == 1 and not event.is_pressed():
 			if can_shoot and (current_pos.y - first_pos.y < -min_shoot_power):
-				movement *= 3
+				movement *= 10
 				movement.y = 50.0
 				apply_impulse(movement, Vector3(0, 0, 0))
 			
