@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://uvs4mmqi5kic"]
+
+[ext_resource type="PackedScene" uid="uid://br6mmieoctw40" path="res://addons/kaykit_city_builder_bits/Assets/gltf/firehydrant.gltf" id="1_sc5ju"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrrkw"]
+size = Vector3(0.130278, 0.217529, 0.125969)
+
+[node name="firehydrant" type="StaticBody3D"]
+
+[node name="firehydrant" parent="." instance=ExtResource("1_sc5ju")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106318, 0)
+shape = SubResource("BoxShape3D_lrrkw")

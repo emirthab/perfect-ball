@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4i8amuehc04d"]
+
+[ext_resource type="PackedScene" uid="uid://cgetkyl4n86ak" path="res://assets/geometry/terrains/bush_1.glb" id="1_k6ndp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xf8i5"]
+radius = 0.398789
+height = 2.17331
+
+[node name="bush_1" type="StaticBody3D"]
+
+[node name="bush_1" parent="." instance=ExtResource("1_k6ndp")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0.00580668, 0.120027, 0.00833244)
+shape = SubResource("CapsuleShape3D_xf8i5")
