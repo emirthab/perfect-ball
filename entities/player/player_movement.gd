@@ -23,30 +23,27 @@ func get_look_vector() -> Vector3:
 	return target_origin
 
 func _physics_process(delta : float):
-	var pos_x : float = (current_pos.x - first_pos.x) * speed_ratio
-	var pos_y : float = (current_pos.y - first_pos.y) * speed_ratio
-	
-	var pivot_rotation_y : float = pivot.rotation.y
-	
-	movement = Vector3(pos_x, 0, pos_y)
-	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot_rotation_y)
+	var diff = current_pos - first_pos
+	movement = Vector3(diff.x, -0.1, diff.y) * speed_ratio
+	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
 	movement.normalized()
 	
-	linear_velocity = linear_velocity.limit_length(100)
+	linear_velocity = linear_velocity.limit_length(50)
 	
 	if raycast.is_colliding():
 		movement = movement.limit_length(10)
 		angular_damp = 2
-		linear_damp = 5
+		linear_damp = 4
 		if first_pos != Vector2(0, 0):
 			linear_velocity = movement
 	else:
 		angular_damp = 0
 		linear_damp = 0
 	
-	var relative_velocity = linear_velocity.rotated(Vector3(0, 1, 0).normalized(), pivot_rotation_y)
+	var relative_velocity = linear_velocity.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
 	var lerped = lerp(camera.fov, -relative_velocity.z * 4, delta )
 	camera.fov = clamp(lerped, 75, 100)
+	print(linear_velocity)
 
 func _on_shoot_timeout():
 	can_shoot = true
@@ -66,10 +63,11 @@ func _input(event : InputEvent):
 			if event.is_pressed():
 				first_pos = event.position
 			if not event.is_pressed():
-				var diff = current_pos - first_pos
-				var impulse_up = diff.y if diff.y < 0 else 0
-				var impulse = Vector3(movement.x * abs(diff.x) / 80, impulse_up / 5, movement.z * abs(diff.y) / 40 )
-				apply_impulse(impulse, Vector3(0, 0, 0))
+				var diff : Vector2= current_pos - first_pos
+				var impulse_up = abs(diff.y) / 20 if (diff.y < 0 and raycast.is_colliding()) else 0
+				var impulse = Vector3(diff.x / 8, impulse_up, diff.y / 3 if raycast.is_colliding() else 0 )
+				impulse = impulse.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
+				apply_impulse(impulse ,Vector3(0, 0, 0))
 				first_pos = Vector2(0, 0)
 	
 	if event is InputEventMouseMotion:
