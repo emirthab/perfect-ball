@@ -10,7 +10,7 @@ roughness = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_5rsso"]
 size = Vector3(2, 0.1, 2)
 
-[node name="road_0" type="StaticBody3D"]
+[node name="grass" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0500036, 0)
