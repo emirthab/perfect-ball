@@ -1,7 +1,6 @@
 extends RigidBody3D
 
-@export var min_shoot_power : float
-@export var shoot_wait_time : float
+@export var input_tracking_delay : float
 @export var speed_ratio : float
 @export var max_velocity : float
 @export var input_treshold : float
@@ -11,7 +10,7 @@ extends RigidBody3D
 @onready var camera : Camera3D = get_node('../Pivot/Camera')
 @onready var viewport_size : Vector2 = get_viewport().get_visible_rect().size
 
-var shoot_timer : Timer = Timer.new()
+var input_tracking_timer : Timer = Timer.new()
 var enemy : CharacterBody3D
 var can_shoot : bool = true
 var first_pos : Vector2 = Vector2(0, 0)
@@ -44,15 +43,19 @@ func _physics_process(delta : float):
 	else:
 		angular_damp = 0
 		linear_damp = 0
+	
+	var relative_velocity = linear_velocity.rotated(Vector3(0, 1, 0).normalized(), pivot_rotation_y)
+	var lerped = lerp(camera.fov, -relative_velocity.z * 4, delta )
+	camera.fov = clamp(lerped, 75, 100)
 
 func _on_shoot_timeout():
 	can_shoot = true
 
 func _ready():
-	shoot_timer.wait_time = shoot_wait_time
-	shoot_timer.one_shot = true
-	shoot_timer.timeout.connect(_on_shoot_timeout)
-	add_child(shoot_timer)
+	input_tracking_timer.wait_time = input_tracking_delay
+	input_tracking_timer.one_shot = true
+	input_tracking_timer.timeout.connect(_on_shoot_timeout)
+	add_child(input_tracking_timer)
 
 func _process(delta : float):
 	pivot.look_at(get_look_vector(), Vector3.UP)
@@ -60,15 +63,13 @@ func _process(delta : float):
 func _input(event : InputEvent):
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
-			if event.is_pressed() and raycast.is_colliding():
-				can_shoot = true
+			if event.is_pressed():
 				first_pos = event.position
 			if not event.is_pressed():
 				var diff = current_pos - first_pos
-				if abs(diff.y) > min_shoot_power or abs(diff.x) > min_shoot_power:
-					var impulse_up = diff.y if diff.y < 0 else 0
-					var impulse = Vector3(movement.x * abs(diff.x) / 50, impulse_up, movement.z * abs(diff.y) / 10 )
-					apply_impulse(impulse, Vector3(0, 0, 0))
+				var impulse_up = diff.y if diff.y < 0 else 0
+				var impulse = Vector3(movement.x * abs(diff.x) / 80, impulse_up / 5, movement.z * abs(diff.y) / 40 )
+				apply_impulse(impulse, Vector3(0, 0, 0))
 				first_pos = Vector2(0, 0)
 	
 	if event is InputEventMouseMotion:
@@ -78,4 +79,4 @@ func _input(event : InputEvent):
 			var threshold = viewport_size / input_treshold
 			first_pos = current_pos - (diff.clamp(-threshold, threshold))
 			can_shoot = false
-			shoot_timer.start()
+			input_tracking_timer.start()
