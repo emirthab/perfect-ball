@@ -10,4 +10,5 @@ func _input(event):
 		get_tree().reload_current_scene()
 
 func _process(delta):
-	$FirstPos.position = get_node("../Player/Body").first_pos
+	DebugDraw2D.set_text("FPS", Engine.get_frames_per_second())
+	#$FirstPos.position = get_node("../Player/Body").first_pos

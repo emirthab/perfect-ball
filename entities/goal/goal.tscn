@@ -1,27 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwhs6yyyhv826"]
 
-[ext_resource type="PackedScene" uid="uid://covyw2knjbpib" path="res://assets/geometry/soccer_goal.glb" id="1_0kj4f"]
+[ext_resource type="PackedScene" uid="uid://covyw2knjbpib" path="res://assets/geometry/soccer_goal.glb" id="1_0p37s"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n5ssa"]
-size = Vector3(5.49727, 0.395092, 6.5856)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1w50j"]
+points = PackedVector3Array(49.8185, 40.6474, 34.2284, 49.8185, 4.68359, 70.1922, 48.0225, -23.6282, 10.7703, -52.5792, 39.2479, 9.46484, -54.8185, 3.0448, 71.8246, 48.152, -22.1225, 70.8353, 47.5789, 39.2477, 9.46507, -53.1694, -10.0335, 8.06532, -54.8185, 40.6474, 34.2284, -53.1528, -22.123, 70.8357, -53.0235, -23.6288, 10.7697, 48.1797, -24.7507, 57.1075, 48.1797, -10.0335, 8.06532, 48.1797, -14.9371, 73.4634, -53.1694, -24.7507, 57.1075, -53.1694, -14.9371, 73.4634, 49.8185, 3.0448, 71.8246)
 
 [node name="Goal" type="StaticBody3D"]
 
-[node name="soccer_goal" parent="." instance=ExtResource("1_0kj4f")]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.0135132, 1.17824, 0, 0)
-
-[node name="Area" type="Area3D" parent="."]
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2969, 1.84704, 3.47452)
-depth = 0.5
-polygon = PackedVector2Array(-1.30118, -1.5848, 0.493614, -0.418029, 2.6838, 2.32217, 2.68474, 0.0172659, 2.69256, -1.80695, -1.3841, -1.86582)
-
-[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2969, 1.84704, -3.45924)
-depth = 0.5
-polygon = PackedVector2Array(-1.30118, -1.5848, 0.493614, -0.418029, 2.6838, 2.32217, 2.68474, 0.0172659, 2.69256, -1.80695, -1.3841, -1.86582)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.706934, -0.70728, 0, 0.70728, 0.706934, 0, 0, 0, 1, -0.64948, 1.94877, 0)
-shape = SubResource("BoxShape3D_n5ssa")
+transform = Transform3D(-3.08593e-09, 0, -0.0615349, 0, 0.0632396, 0, 0.0705979, 0, -2.68977e-09, 2.0007, 1.52701, 0.218968)
+shape = SubResource("ConvexPolygonShape3D_1w50j")
+
+[node name="soccer_goal" parent="." instance=ExtResource("1_0p37s")]
+transform = Transform3D(-3.08593e-09, 0, -0.0615349, 0, 0.0632396, 0, 0.0705979, 0, -2.68978e-09, -0.324233, 0.0291772, 0)

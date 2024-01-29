@@ -16,6 +16,7 @@ var can_shoot : bool = true
 var first_pos : Vector2 = Vector2(0, 0)
 var current_pos : Vector2
 var movement : Vector3
+var handling_movement : bool = true
 
 func get_look_vector() -> Vector3:
 	var target_look : Node3D = get_tree().current_scene.get_node('Goal')
@@ -23,6 +24,7 @@ func get_look_vector() -> Vector3:
 	return target_origin
 
 func _physics_process(delta : float):
+	DebugDraw2D.set_text("Handling Input", handling_movement)
 	var diff = current_pos - first_pos
 	movement = Vector3(diff.x, -0.1, diff.y) * speed_ratio
 	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
@@ -34,7 +36,7 @@ func _physics_process(delta : float):
 		movement = movement.limit_length(10)
 		angular_damp = 2
 		linear_damp = 4
-		if first_pos != Vector2(0, 0):
+		if first_pos != Vector2(0, 0) and handling_movement:
 			linear_velocity = movement
 	else:
 		angular_damp = 0
@@ -43,7 +45,6 @@ func _physics_process(delta : float):
 	var relative_velocity = linear_velocity.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
 	var lerped = lerp(camera.fov, -relative_velocity.z * 4, delta )
 	camera.fov = clamp(lerped, 75, 100)
-	print(linear_velocity)
 
 func _on_shoot_timeout():
 	can_shoot = true
@@ -58,19 +59,19 @@ func _process(delta : float):
 	pivot.look_at(get_look_vector(), Vector3.UP)
 
 func _input(event : InputEvent):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and handling_movement == true:
 		if event.button_index == 1:
 			if event.is_pressed():
 				first_pos = event.position
 			if not event.is_pressed():
-				var diff : Vector2= current_pos - first_pos
+				var diff : Vector2 = current_pos - first_pos
 				var impulse_up = abs(diff.y) / 20 if (diff.y < 0 and raycast.is_colliding()) else 0
 				var impulse = Vector3(diff.x / 8, impulse_up, diff.y / 3 if raycast.is_colliding() else 0 )
 				impulse = impulse.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
 				apply_impulse(impulse ,Vector3(0, 0, 0))
 				first_pos = Vector2(0, 0)
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and handling_movement == true:
 		current_pos = event.position
 		if first_pos != Vector2(0, 0) and can_shoot:
 			var diff = current_pos - first_pos
