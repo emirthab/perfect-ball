@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://2j04it80udmv" path="res://assets/geometry/fence.glb" id="7_jvsnu"]
 [ext_resource type="PackedScene" uid="uid://duiv4xijn3p7b" path="res://assets/geometry/bush.glb" id="8_f7cot"]
 [ext_resource type="PackedScene" uid="uid://cbgayclm4xwhr" path="res://assets/geometry/house_1.glb" id="11_ic2bx"]
-[ext_resource type="Material" uid="uid://bx8uyoc5jciry" path="res://assets/materials/grass.material" id="12_ovojh"]
+[ext_resource type="Material" path="res://assets/materials/grass.material" id="12_ovojh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6cek"]
 shader = ExtResource("3_cte70")
@@ -68,7 +68,7 @@ section_length = 0.5
 [node name="Playground" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_j65jg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297432, 1.23703, 38.8006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73291, 1.23703, 36.6443)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.74246, -0.356228, 0.567323, -0.286977, 0.596105, 0.749869, -0.605308, -0.719556, 0.340355, 0, 9.86703, 0)

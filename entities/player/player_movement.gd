@@ -24,7 +24,6 @@ func get_look_vector() -> Vector3:
 	return target_origin
 
 func _physics_process(delta : float):
-	DebugDraw2D.set_text("Handling Input", handling_movement)
 	var diff = current_pos - first_pos
 	movement = Vector3(diff.x, -0.1, diff.y) * speed_ratio
 	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)

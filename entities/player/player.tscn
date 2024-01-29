@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dygd6db6rvm2q"]
+[gd_scene load_steps=7 format=3 uid="uid://dygd6db6rvm2q"]
 
 [ext_resource type="Script" path="res://entities/player/player_movement.gd" id="1_jj0jc"]
 [ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
@@ -13,16 +13,6 @@ bounce = 0.44
 albedo_texture = ExtResource("2_jlr1g")
 
 [sub_resource type="SphereMesh" id="SphereMesh_0pl4i"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_pkkxh"]
-shading_mode = 0
-albedo_color = Color(1, 0.996078, 0.384314, 1)
-grow_amount = 6.737
-
-[sub_resource type="Curve" id="Curve_mju44"]
-_data = [Vector2(0, 1), 0.0, -1.65061, 0, 0, Vector2(1, 0), -1.13989, 0.0, 0, 0]
-point_count = 2
-metadata/_snap_enabled = true
 
 [node name="Player" type="Node3D"]
 
@@ -51,13 +41,6 @@ mesh = SubResource("SphereMesh_0pl4i")
 remote_path = NodePath("../../Pivot")
 update_rotation = false
 update_scale = false
-
-[node name="TrailEmitter" type="TrailEmitter" parent="Body"]
-material = SubResource("ORMMaterial3D_pkkxh")
-curve = SubResource("Curve_mju44")
-geometry_nodepath = NodePath("../Model")
-num_points = 5
-size = 0.8
 
 [node name="Pivot" type="Node3D" parent="."]
 
