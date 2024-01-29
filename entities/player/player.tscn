@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dygd6db6rvm2q"]
+[gd_scene load_steps=9 format=3 uid="uid://dygd6db6rvm2q"]
 
 [ext_resource type="Script" path="res://entities/player/player_movement.gd" id="1_jj0jc"]
 [ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
@@ -15,13 +15,6 @@ bounce = 0.44
 albedo_texture = ExtResource("2_jlr1g")
 
 [sub_resource type="SphereMesh" id="SphereMesh_0pl4i"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_auso3"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_dsb2g"]
-transparency = 1
-cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.580392)
 
 [node name="Player" type="Node3D"]
 
@@ -67,8 +60,3 @@ material_override = ExtResource("4_jvkm5")
 cast_shadow = 0
 script = ExtResource("3_ruoko")
 lifespan = 0.3
-startColor = Color(1, 1, 1, 0.568627)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_auso3")
-surface_material_override/0 = SubResource("ORMMaterial3D_dsb2g")

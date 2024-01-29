@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bav4nold6hwyy"]
+[gd_scene load_steps=22 format=3 uid="uid://bav4nold6hwyy"]
 
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
 [ext_resource type="Shader" uid="uid://brqnb56miitcl" path="res://assets/shaders/sky.tres" id="3_cte70"]
@@ -32,7 +32,7 @@ reflected_light_source = 1
 size = Vector2(2, 2)
 
 [sub_resource type="Gradient" id="Gradient_nv3ke"]
-offsets = PackedFloat32Array(0, 0.295082)
+offsets = PackedFloat32Array(0.147541, 0.52459)
 colors = PackedColorArray(0, 0, 0, 0, 0.537255, 0.8, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ln60q"]
@@ -42,24 +42,15 @@ gradient = SubResource("Gradient_nv3ke")
 render_priority = 0
 shader = ExtResource("5_pdk30")
 shader_parameter/fog_intensity = 0.687
-shader_parameter/fog_amount = 0.01
+shader_parameter/fog_amount = 0.021
 shader_parameter/gradient = SubResource("GradientTexture1D_ln60q")
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_6jf5d"]
 material = ExtResource("13_vhnu0")
 radius = 4.46
 radial_steps = 24
-sections = 16
-section_length = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_3vmv1"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_pm6dm"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.262745, 0.262745, 0.262745, 0.92549)
+sections = 2
+section_length = 3.0
 
 [node name="Playground" type="Node3D"]
 
@@ -219,7 +210,7 @@ size = Vector3(79.0491, 10, 95.4824)
 material = ExtResource("12_ovojh")
 
 [node name="Pit" type="CSGMesh3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74584, -3.30837, 20.8828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74584, -2.35276, 20.8828)
 operation = 2
 mesh = SubResource("TubeTrailMesh_6jf5d")
 
@@ -231,8 +222,3 @@ script = ExtResource("13_q433y")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.406764, 7.48876, -0.00580597)
 depth = 15.0
 polygon = PackedVector2Array(3.90325, -17.7123, -5.38846, -17.7461, -7.34713, -13.5267, -8.18869, -8.85376, -9.05223, -4.78355, -9.4343, 2.98341, -11.0106, 6.6815, -10.5334, 11.1526, -8.03288, 14.9238, -4.38465, 16.9734, 1.39515, 16.7684, 7.13396, 12.6283, 9.30651, 4.02006, 12.5038, 0.330828, 12.3809, -4.42418, 6.88801, -9.34316)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.627577, 30.0885)
-mesh = SubResource("BoxMesh_3vmv1")
-surface_material_override/0 = SubResource("ORMMaterial3D_pm6dm")
