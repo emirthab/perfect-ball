@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dygd6db6rvm2q"]
+[gd_scene load_steps=7 format=3 uid="uid://dygd6db6rvm2q"]
 
 [ext_resource type="Script" path="res://entities/player/player_movement.gd" id="1_jj0jc"]
 [ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
-[ext_resource type="Script" path="res://entities/player/trail.gd" id="3_ruoko"]
-[ext_resource type="Material" uid="uid://bjmoduh4a4yn0" path="res://assets/materials/trail.material" id="4_jvkm5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s7egx"]
 rough = true
@@ -15,13 +13,6 @@ bounce = 0.44
 albedo_texture = ExtResource("2_jlr1g")
 
 [sub_resource type="SphereMesh" id="SphereMesh_0pl4i"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_auso3"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_dsb2g"]
-transparency = 1
-cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.580392)
 
 [node name="Player" type="Node3D"]
 
@@ -47,11 +38,6 @@ remote_path = NodePath("../../Pivot")
 update_rotation = false
 update_scale = false
 
-[node name="RemoteTransform3D2" type="RemoteTransform3D" parent="Body"]
-remote_path = NodePath("../../Trail3D")
-update_rotation = false
-update_scale = false
-
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Camera" type="Camera3D" parent="Pivot"]
@@ -61,14 +47,3 @@ current = true
 [node name="RayCast" type="RayCast3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.469085, 0)
 target_position = Vector3(0, -0.1, 0)
-
-[node name="Trail3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("4_jvkm5")
-cast_shadow = 0
-script = ExtResource("3_ruoko")
-lifespan = 0.3
-startColor = Color(1, 1, 1, 0.568627)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_auso3")
-surface_material_override/0 = SubResource("ORMMaterial3D_dsb2g")

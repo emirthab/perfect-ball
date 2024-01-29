@@ -1462,6 +1462,7 @@ shape = SubResource("CylinderShape3D_5m77w")
 
 [node name="TocuhArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.308, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TocuhArea"]
 shape = SubResource("CapsuleShape3D_b8oyv")

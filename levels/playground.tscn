@@ -1,6 +1,5 @@
 [gd_scene load_steps=24 format=3 uid="uid://bav4nold6hwyy"]
 
-[ext_resource type="Script" path="res://ui/ui_controller.gd" id="1_6o1aj"]
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
 [ext_resource type="Shader" uid="uid://brqnb56miitcl" path="res://assets/shaders/sky.tres" id="3_cte70"]
 [ext_resource type="PackedScene" uid="uid://cwhs6yyyhv826" path="res://entities/goal/goal.tscn" id="3_venmi"]
@@ -11,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://2j04it80udmv" path="res://assets/geometry/fence.glb" id="7_jvsnu"]
 [ext_resource type="PackedScene" uid="uid://duiv4xijn3p7b" path="res://assets/geometry/bush.glb" id="8_f7cot"]
 [ext_resource type="PackedScene" uid="uid://cbgayclm4xwhr" path="res://assets/geometry/house_1.glb" id="11_ic2bx"]
-[ext_resource type="Material" path="res://assets/materials/grass.material" id="12_ovojh"]
+[ext_resource type="Material" uid="uid://bx8uyoc5jciry" path="res://assets/materials/grass.material" id="12_ovojh"]
+[ext_resource type="Script" path="res://entities/game_area.gd" id="13_q433y"]
+[ext_resource type="Material" uid="uid://b31bwf2ogo2xo" path="res://assets/materials/pit.material" id="13_vhnu0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6cek"]
 shader = ExtResource("3_cte70")
@@ -26,13 +27,12 @@ sky_rotation = Vector3(3.48787e-16, 3.39641, 3.48787e-16)
 ambient_light_source = 2
 ambient_light_color = Color(0.654902, 0.698039, 0.890196, 1)
 reflected_light_source = 1
-glow_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_vn55h"]
 size = Vector2(2, 2)
 
 [sub_resource type="Gradient" id="Gradient_nv3ke"]
-offsets = PackedFloat32Array(0, 0.368852)
+offsets = PackedFloat32Array(0, 0.295082)
 colors = PackedColorArray(0, 0, 0, 0, 0.537255, 0.8, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ln60q"]
@@ -45,65 +45,46 @@ shader_parameter/fog_intensity = 0.687
 shader_parameter/fog_amount = 0.01
 shader_parameter/gradient = SubResource("GradientTexture1D_ln60q")
 
-[sub_resource type="Gradient" id="Gradient_6hxyc"]
-colors = PackedColorArray(0.039619, 0.00663296, 0.000184421, 1, 0.788235, 0.419608, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g02wg"]
-gradient = SubResource("Gradient_6hxyc")
-fill_from = Vector2(0.989474, 0.342105)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfy8d"]
-albedo_texture = SubResource("GradientTexture2D_g02wg")
-clearcoat = 0.24
-subsurf_scatter_strength = 0.4
-grow_amount = 3.165
-
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_6jf5d"]
-material = SubResource("StandardMaterial3D_bfy8d")
+material = ExtResource("13_vhnu0")
 radius = 4.46
 radial_steps = 24
 sections = 16
 section_length = 0.5
 
+[sub_resource type="BoxMesh" id="BoxMesh_3vmv1"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_pm6dm"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.262745, 0.262745, 0.262745, 0.92549)
+
 [node name="Playground" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_j65jg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73291, 1.23703, 36.6443)
+metadata/_edit_lock_ = true
+
+[node name="Goal" parent="." instance=ExtResource("3_venmi")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0, 0.0665698, 9.9089)
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.74246, -0.356228, 0.567323, -0.286977, 0.596105, 0.749869, -0.605308, -0.719556, 0.340355, 0, 9.86703, 0)
 shadow_enabled = true
 shadow_opacity = 0.52
 
-[node name="Goal" parent="." instance=ExtResource("3_venmi")]
-transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0, 0.0665698, 9.9089)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2gkn7")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_6o1aj")
 
 [node name="Fog" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_vn55h")
 surface_material_override/0 = SubResource("ShaderMaterial_pn3ta")
 
-[node name="Enemy" parent="." instance=ExtResource("6_k43d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18383, 0, 25.1478)
-
-[node name="Enemy2" parent="." instance=ExtResource("6_k43d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142906, 0, 12.8923)
-
-[node name="Enemy3" parent="." instance=ExtResource("6_k43d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82944, 0, 24.6449)
-
 [node name="Props" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="bank" parent="Props" instance=ExtResource("7_gxmrt")]
 transform = Transform3D(-0.918908, 0, 0.394471, 0, 1, 0, -0.394471, 0, -0.918908, -7.49238, 0, 28.8867)
@@ -216,16 +197,42 @@ transform = Transform3D(-0.999895, 0, 0.0145206, 0, 1, 0, -0.0145206, 0, -0.9998
 [node name="house_1" parent="Props" instance=ExtResource("11_ic2bx")]
 transform = Transform3D(-0.73392, 0, -0.318372, 0, 0.8, 0, 0.318372, 0, -0.73392, -8.85018, -0.16255, -4.08678)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="Enemies" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("6_k43d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18383, 0, 25.1478)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("6_k43d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142906, 0, 12.8923)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_k43d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82944, 0, 24.6449)
+
+[node name="Floor" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.05275, 7.09484)
+[node name="Grass" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.05275, 16.6396)
 use_collision = true
-size = Vector3(151.559, 10, 208.372)
+size = Vector3(79.0491, 10, 95.4824)
 material = ExtResource("12_ovojh")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+[node name="Pit" type="CSGMesh3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74584, -3.30837, 20.8828)
 operation = 2
 mesh = SubResource("TubeTrailMesh_6jf5d")
+
+[node name="GameArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52999, 0, 25.1971)
+script = ExtResource("13_q433y")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="GameArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.406764, 7.48876, -0.00580597)
+depth = 15.0
+polygon = PackedVector2Array(3.90325, -17.7123, -5.38846, -17.7461, -7.34713, -13.5267, -8.18869, -8.85376, -9.05223, -4.78355, -9.4343, 2.98341, -11.0106, 6.6815, -10.5334, 11.1526, -8.03288, 14.9238, -4.38465, 16.9734, 1.39515, 16.7684, 7.13396, 12.6283, 9.30651, 4.02006, 12.5038, 0.330828, 12.3809, -4.42418, 6.88801, -9.34316)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.627577, 30.0885)
+mesh = SubResource("BoxMesh_3vmv1")
+surface_material_override/0 = SubResource("ORMMaterial3D_pm6dm")

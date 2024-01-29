@@ -1,9 +1,10 @@
 extends RigidBody3D
 
-@export var input_tracking_delay : float
-@export var speed_ratio : float
-@export var max_velocity : float
-@export var input_treshold : float
+@export var input_tracking_delay : float = 0.2
+@export var speed_ratio : float = 1
+@export var max_velocity : float = 50
+@export var max_velocity_on_floor : float = 15
+@export var input_treshold : float = 10
 
 @onready var raycast : RayCast3D = get_node('../Pivot/RayCast')
 @onready var pivot : Node3D = get_node('../Pivot')
@@ -19,7 +20,7 @@ var movement : Vector3
 var handling_movement : bool = true
 
 func get_look_vector() -> Vector3:
-	var target_look : Node3D = get_tree().current_scene.get_node('Goal')
+	var target_look : Node3D = get_tree().current_scene.get_node('Goal/Pivot')
 	var target_origin : Vector3 = target_look.transform.origin
 	return target_origin
 
@@ -29,10 +30,10 @@ func _physics_process(delta : float):
 	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
 	movement.normalized()
 	
-	linear_velocity = linear_velocity.limit_length(50)
+	linear_velocity = linear_velocity.limit_length(max_velocity)
 	
 	if raycast.is_colliding():
-		movement = movement.limit_length(10)
+		movement = movement.limit_length(max_velocity_on_floor)
 		angular_damp = 2
 		linear_damp = 4
 		if first_pos != Vector2(0, 0) and handling_movement:
