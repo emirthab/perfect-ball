@@ -60,16 +60,15 @@ func _process(delta : float):
 
 func _input(event : InputEvent):
 	if event is InputEventMouseButton and handling_movement == true:
-		if event.button_index == 1:
-			if event.is_pressed():
-				first_pos = event.position
-			if not event.is_pressed():
-				var diff : Vector2 = current_pos - first_pos
-				var impulse_up = abs(diff.y) / 20 if (diff.y < 0 and raycast.is_colliding()) else 0
-				var impulse = Vector3(diff.x / 8, impulse_up, diff.y / 3 if raycast.is_colliding() else 0 )
-				impulse = impulse.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
-				apply_impulse(impulse ,Vector3(0, 0, 0))
-				first_pos = Vector2(0, 0)
+		if event.is_pressed():
+			first_pos = event.position
+		if not event.is_pressed():
+			var diff : Vector2 = current_pos - first_pos
+			var impulse_up = abs(diff.y) / 20 if (diff.y < 0 and raycast.is_colliding()) else 0
+			var impulse = Vector3(diff.x / 8, impulse_up, diff.y / 3 if raycast.is_colliding() else 0 )
+			impulse = impulse.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
+			apply_impulse(impulse ,Vector3(0, 0, 0))
+			first_pos = Vector2(0, 0)
 	
 	if event is InputEventMouseMotion and handling_movement == true:
 		current_pos = event.position

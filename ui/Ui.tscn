@@ -1,0 +1,229 @@
+[gd_scene load_steps=13 format=3 uid="uid://y1kpi64ctmhl"]
+
+[ext_resource type="Theme" uid="uid://de2l60l7ub7nb" path="res://assets/ui.theme" id="1_7efvr"]
+[ext_resource type="Script" path="res://ui/ui_controller.gd" id="1_j2t54"]
+[ext_resource type="Texture2D" uid="uid://jb5tr0javnra" path="res://assets/textures/ui/arrows.png" id="2_jhkja"]
+[ext_resource type="Texture2D" uid="uid://crokby8mxvofm" path="res://assets/textures/ui/hand.png" id="3_8v4kq"]
+[ext_resource type="SpriteFrames" uid="uid://c5jdnufxqyimd" path="res://assets/textures/ui/gold_coin_animated.gif" id="5_4425a"]
+[ext_resource type="FontFile" uid="uid://dr4x4e7suab4s" path="res://assets/fonts/Bumpo.ttf" id="5_nn1em"]
+[ext_resource type="Texture2D" uid="uid://b8olyhpomv05s" path="res://assets/textures/ui/no_ads.png" id="6_h7y4k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oip37"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.419608)
+shadow_size = 1
+shadow_offset = Vector2(1, 3)
+
+[sub_resource type="Animation" id="Animation_d6bbp"]
+resource_name = "Hand Loop"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(236, 943), Vector2(443, 943)]
+}
+
+[sub_resource type="Animation" id="Animation_hgggn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(236, 943)]
+}
+
+[sub_resource type="Animation" id="Animation_18rgc"]
+resource_name = "No Ad"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxh4k"]
+_data = {
+"Hand Loop": SubResource("Animation_d6bbp"),
+"No Ad": SubResource("Animation_18rgc"),
+"RESET": SubResource("Animation_hgggn")
+}
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7efvr")
+script = ExtResource("1_j2t54")
+
+[node name="BeforeGame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DarkEffect" type="ColorRect" parent="BeforeGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0980392, 0.0980392, 0.0980392, 0.407843)
+metadata/_edit_lock_ = true
+
+[node name="Arrow" type="TextureRect" parent="BeforeGame"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -370.0
+offset_right = 151.0
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_jhkja")
+
+[node name="Hand" type="TextureRect" parent="BeforeGame"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -337.0
+offset_right = -83.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_8v4kq")
+
+[node name="TapToStart" type="Label" parent="BeforeGame"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.5
+offset_top = -451.0
+offset_right = 136.5
+offset_bottom = -411.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.368627)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("5_nn1em")
+theme_override_font_sizes/font_size = 40
+text = "Tap To Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="BeforeGame"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.5
+offset_top = 227.0
+offset_right = 136.5
+offset_bottom = 267.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.368627)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BeforeGame"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -285.0
+offset_right = 104.0
+offset_bottom = -210.0
+grow_vertical = 2
+texture = ExtResource("6_h7y4k")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Gold" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_bottom = 214.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Gold"]
+layout_mode = 2
+offset_left = 227.0
+offset_top = 51.0
+offset_right = 397.0
+offset_bottom = 98.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oip37")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gold"]
+position = Vector2(365, 74)
+scale = Vector2(0.546667, 0.546667)
+sprite_frames = ExtResource("5_4425a")
+animation = &"gif"
+autoplay = "gif"
+frame = 75
+frame_progress = 0.658609
+
+[node name="Label" type="Label" parent="Gold"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 58.0
+offset_right = 337.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 28
+text = "3214"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BeforeGame")
+libraries = {
+"": SubResource("AnimationLibrary_cxh4k")
+}
+autoplay = "Hand Loop"

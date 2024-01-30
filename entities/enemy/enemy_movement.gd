@@ -37,7 +37,7 @@ func _on_dash_area_body_entered(body : RigidBody3D):
 	if body.is_in_group("player") and not is_dead:
 		state_machine.travel("Slide")
 		speed = dash_speed
-		is_dead = true
+		death()
 		inactive_timer.start()
 
 
@@ -49,6 +49,8 @@ func _on_tracking_area_body_entered(body : RigidBody3D):
 func _inactive_timer_timeout():
 	inactive = true
 
+func death():
+	is_dead = true
 
 func _on_tocuh_area_body_entered(body : RigidBody3D):
 	if body.is_in_group("player") and not inactive:

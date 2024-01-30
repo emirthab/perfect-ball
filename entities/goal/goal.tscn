@@ -55,4 +55,4 @@ transform = Transform3D(-3.47118e-10, -4.371e-08, 1, -0.999998, -0.00211188, -4.
 shape = SubResource("BoxShape3D_sxuo3")
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46958, 2.96778, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3771, 2.96778, 0)

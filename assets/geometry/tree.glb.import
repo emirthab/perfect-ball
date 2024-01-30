@@ -23,15 +23,21 @@ meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=true
+skins/use_named_skins=false
 animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"None": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/tree.material"
+}
+},
 "nodes": {
-"PATH:node-0": {
+"PATH:node-0_001": {
 "generate/physics": true
 }
 }

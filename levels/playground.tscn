@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dhovhjkal20qh" path="res://assets/geometry/tree.glb" id="7_ik1uy"]
 [ext_resource type="PackedScene" uid="uid://2j04it80udmv" path="res://assets/geometry/fence.glb" id="7_jvsnu"]
 [ext_resource type="PackedScene" uid="uid://duiv4xijn3p7b" path="res://assets/geometry/bush.glb" id="8_f7cot"]
-[ext_resource type="PackedScene" uid="uid://cbgayclm4xwhr" path="res://assets/geometry/house_1.glb" id="11_ic2bx"]
+[ext_resource type="PackedScene" uid="uid://c4u82uai2wfku" path="res://assets/geometry/barn.glb" id="9_lp1on"]
 [ext_resource type="Material" uid="uid://bx8uyoc5jciry" path="res://assets/materials/grass.material" id="12_ovojh"]
 [ext_resource type="Script" path="res://entities/game_area.gd" id="13_q433y"]
 [ext_resource type="Material" uid="uid://b31bwf2ogo2xo" path="res://assets/materials/pit.material" id="13_vhnu0"]
@@ -153,19 +153,34 @@ transform = Transform3D(0.925336, 0, -0.379149, 0, 1, 0, 0.379149, 0, 0.925336, 
 transform = Transform3D(0.999597, 0, 0.0283753, 0, 1, 0, -0.0283753, 0, 0.999597, 11.6432, 0, 13.2299)
 
 [node name="tree7" parent="Props" instance=ExtResource("7_ik1uy")]
-transform = Transform3D(0.999597, 0, 0.0283753, 0, 1, 0, -0.0283753, 0, 0.999597, 0.582804, 1.90735e-06, -7.99205)
+transform = Transform3D(0.999597, 0, 0.0283753, 0, 1, 0, -0.0283753, 0, 0.999597, 3.27186, 1.90735e-06, 0.788713)
 
 [node name="tree8" parent="Props" instance=ExtResource("7_ik1uy")]
-transform = Transform3D(0.92126, 0, 0.388947, 0, 1, 0, -0.388947, 0, 0.92126, 6.09144, 0, -5.23543)
+transform = Transform3D(0.92126, 0, 0.388947, 0, 1, 0, -0.388947, 0, 0.92126, 8.9452, 0, 5.24733)
 
 [node name="tree9" parent="Props" instance=ExtResource("7_ik1uy")]
-transform = Transform3D(0.0504362, 0, -0.998727, 0, 1, 0, 0.998727, 0, 0.0504362, -19.0444, -0.878178, 2.37608)
+transform = Transform3D(0.667092, 0, 0.744975, 0, 1, 0, -0.744975, 0, 0.667092, -14.8062, -0.878178, 18.7629)
 
 [node name="tree5" parent="Props" instance=ExtResource("7_ik1uy")]
 transform = Transform3D(0.831111, 0, -0.556107, 0, 1, 0, 0.556107, 0, 0.831111, 19.6264, 0, 16.424)
 
 [node name="tree6" parent="Props" instance=ExtResource("7_ik1uy")]
 transform = Transform3D(0.605711, 0, 0.795685, 0, 1, 0, -0.795685, 0, 0.605711, -11.1071, 0, 13.2299)
+
+[node name="tree10" parent="Props" instance=ExtResource("7_ik1uy")]
+transform = Transform3D(0.605711, 0, 0.795685, 0, 1, 0, -0.795685, 0, 0.605711, -20.3649, 0, 7.78519)
+
+[node name="tree11" parent="Props" instance=ExtResource("7_ik1uy")]
+transform = Transform3D(0.605711, 0, 0.795685, 0, 1, 0, -0.795685, 0, 0.605711, -26.6162, 0, -0.291466)
+
+[node name="tree12" parent="Props" instance=ExtResource("7_ik1uy")]
+transform = Transform3D(0.605711, 0, 0.795685, 0, 1, 0, -0.795685, 0, 0.605711, -1.18076, 0, -13.5902)
+
+[node name="tree13" parent="Props" instance=ExtResource("7_ik1uy")]
+transform = Transform3D(0.605711, 0, 0.795685, 0, 1, 0, -0.795685, 0, 0.605711, 17.6632, 0, -1.97213)
+
+[node name="tree14" parent="Props" instance=ExtResource("7_ik1uy")]
+transform = Transform3D(0.605711, 0, 0.795685, 0, 1, 0, -0.795685, 0, 0.605711, 17.6632, 0, -1.97213)
 
 [node name="bush" parent="Props" instance=ExtResource("8_f7cot")]
 transform = Transform3D(-0.643108, 0, 0.765775, 0, 1, 0, -0.765775, 0, -0.643108, 11.2506, 0, 31.4748)
@@ -185,8 +200,8 @@ transform = Transform3D(-0.550961, 0, -0.834531, 0, 1, 0, 0.834531, 0, -0.550961
 [node name="bush2" parent="Props" instance=ExtResource("8_f7cot")]
 transform = Transform3D(-0.999895, 0, 0.0145206, 0, 1, 0, -0.0145206, 0, -0.999895, 10.1916, 0, 16.3682)
 
-[node name="house_1" parent="Props" instance=ExtResource("11_ic2bx")]
-transform = Transform3D(-0.73392, 0, -0.318372, 0, 0.8, 0, 0.318372, 0, -0.73392, -8.85018, -0.16255, -4.08678)
+[node name="barn" parent="Props" instance=ExtResource("9_lp1on")]
+transform = Transform3D(-0.510408, 0, 0.859932, 0, 1, 0, -0.859932, 0, -0.510408, -13.0812, 0, -4.00808)
 
 [node name="Enemies" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
