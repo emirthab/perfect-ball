@@ -59,4 +59,5 @@ target_position = Vector3(0, -0.1, 0)
 material_override = ExtResource("4_jvkm5")
 cast_shadow = 0
 script = ExtResource("3_ruoko")
+motionDelta = 0.2
 lifespan = 0.3

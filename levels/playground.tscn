@@ -32,7 +32,7 @@ reflected_light_source = 1
 size = Vector2(2, 2)
 
 [sub_resource type="Gradient" id="Gradient_nv3ke"]
-offsets = PackedFloat32Array(0.147541, 0.52459)
+offsets = PackedFloat32Array(0.385246, 0.594262)
 colors = PackedColorArray(0, 0, 0, 0, 0.537255, 0.8, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ln60q"]
