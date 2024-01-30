@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dygd6db6rvm2q"]
 
-[ext_resource type="Script" path="res://entities/player/player_movement.gd" id="1_jj0jc"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_tbaw6"]
 [ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
 [ext_resource type="Script" path="res://entities/player/trail.gd" id="3_ruoko"]
 [ext_resource type="Material" uid="uid://bjmoduh4a4yn0" path="res://assets/materials/trail.material" id="4_jvkm5"]
@@ -26,7 +26,7 @@ contact_monitor = true
 linear_damp = 5.0
 angular_damp_mode = 1
 angular_damp = 2.0
-script = ExtResource("1_jj0jc")
+script = ExtResource("1_tbaw6")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Body"]
 shape = SubResource("SphereShape3D_nchoa")

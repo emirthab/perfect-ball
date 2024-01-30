@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwhs6yyyhv826"]
+[gd_scene load_steps=8 format=3 uid="uid://cwhs6yyyhv826"]
 
 [ext_resource type="PackedScene" uid="uid://covyw2knjbpib" path="res://assets/geometry/soccer_goal.glb" id="1_0p37s"]
 
@@ -16,6 +16,9 @@ size = Vector3(1.55266, 2.50494, 0.387695)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sxuo3"]
 size = Vector3(1.55266, 6.62874, 0.387695)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ds8lt"]
+size = Vector3(1.13574, 3.75848, 6.52051)
 
 [node name="Goal" type="StaticBody3D"]
 
@@ -56,3 +59,9 @@ shape = SubResource("BoxShape3D_sxuo3")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3771, 2.96778, 0)
+
+[node name="GoalArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67095, 1.87883, 0.0490227)
+shape = SubResource("BoxShape3D_ds8lt")

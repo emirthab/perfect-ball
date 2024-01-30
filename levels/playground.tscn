@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bav4nold6hwyy"]
+[gd_scene load_steps=24 format=3 uid="uid://bav4nold6hwyy"]
 
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
 [ext_resource type="Shader" uid="uid://brqnb56miitcl" path="res://assets/shaders/sky.tres" id="3_cte70"]
@@ -13,6 +13,8 @@
 [ext_resource type="Material" uid="uid://bx8uyoc5jciry" path="res://assets/materials/grass.material" id="12_ovojh"]
 [ext_resource type="Script" path="res://entities/game_area.gd" id="13_q433y"]
 [ext_resource type="Material" uid="uid://b31bwf2ogo2xo" path="res://assets/materials/pit.material" id="13_vhnu0"]
+[ext_resource type="Material" uid="uid://bixiwc8njdlqx" path="res://assets/materials/cloud_fog.material" id="14_pb4kj"]
+[ext_resource type="Material" uid="uid://7q4fa8ov3t0d" path="res://assets/materials/cloud.material" id="14_x3wmt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6cek"]
 shader = ExtResource("3_cte70")
@@ -33,7 +35,7 @@ size = Vector2(2, 2)
 
 [sub_resource type="Gradient" id="Gradient_nv3ke"]
 offsets = PackedFloat32Array(0.385246, 0.594262)
-colors = PackedColorArray(0, 0, 0, 0, 0.537255, 0.8, 1, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.674391, 0.881236, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ln60q"]
 gradient = SubResource("Gradient_nv3ke")
@@ -237,3 +239,77 @@ script = ExtResource("13_q433y")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.406764, 7.48876, -0.00580597)
 depth = 15.0
 polygon = PackedVector2Array(3.90325, -17.7123, -5.38846, -17.7461, -7.34713, -13.5267, -8.18869, -8.85376, -9.05223, -4.78355, -9.4343, 2.98341, -11.0106, 6.6815, -10.5334, 11.1526, -8.03288, 14.9238, -4.38465, 16.9734, 1.39515, 16.7684, 7.13396, 12.6283, 9.30651, 4.02006, 12.5038, 0.330828, 12.3809, -4.42418, 6.88801, -9.34316)
+
+[node name="Clouds" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.26402, -237.567)
+radius = 30.9854
+rings = 20
+material = ExtResource("14_x3wmt")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7725, 11.9951, -250.83)
+radius = 37.7565
+rings = 20
+material = ExtResource("14_x3wmt")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5039, 13.2801, -250.83)
+radius = 51.8341
+rings = 20
+material = ExtResource("14_x3wmt")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.849, -12.1679, -250.83)
+radius = 51.8341
+rings = 20
+material = ExtResource("14_x3wmt")
+
+[node name="CSGSphere3D11" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -191.776, 15.2705, -250.83)
+radius = 64.2583
+rings = 20
+material = ExtResource("14_x3wmt")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.514, -25.6795, -250.83)
+radius = 51.8341
+rings = 20
+material = ExtResource("14_x3wmt")
+
+[node name="CSGSphere3D12" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.363, -40.1066, -204.257)
+radius = 64.2583
+rings = 20
+material = ExtResource("14_pb4kj")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(0.785257, 0, 0, 0, 0.800793, 0, 0, 0, 1, -0.389396, -26.8159, -187.095)
+radius = 30.9854
+rings = 20
+material = ExtResource("14_pb4kj")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(0.785257, 0, 0, 0, 0.800793, 0, 0, 0, 1, 37.9096, -22.0869, -200.358)
+radius = 37.7565
+rings = 20
+material = ExtResource("14_pb4kj")
+
+[node name="CSGSphere3D8" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(0.785257, 0, 0, 0, 0.800793, 0, 0, 0, 1, -47.1153, -21.058, -200.358)
+radius = 51.8341
+rings = 20
+material = ExtResource("14_pb4kj")
+
+[node name="CSGSphere3D9" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(0.785257, 0, 0, 0, 0.800793, 0, 0, 0, 1, -91.3609, -41.4365, -200.358)
+radius = 51.8341
+rings = 20
+material = ExtResource("14_pb4kj")
+
+[node name="CSGSphere3D10" type="CSGSphere3D" parent="Clouds"]
+transform = Transform3D(0.785257, 0, 0, 0, 0.800793, 0, 0, 0, 1, 91.8894, -52.2566, -200.358)
+radius = 51.8341
+rings = 20
+material = ExtResource("14_pb4kj")

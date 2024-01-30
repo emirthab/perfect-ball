@@ -28,12 +28,12 @@ func _physics_process(delta):
 	if tracking and not is_dead:
 		direction = player.global_transform.origin - global_transform.origin
 		direction.y = -0.01
-	if not inactive:
+	if not inactive and tracking:
 		look_at(-direction + global_transform.origin, Vector3.UP)
 		move_and_collide(direction * speed * delta)
 
 
-func _on_dash_area_body_entered(body : RigidBody3D):
+func _on_dash_area_body_entered(body):
 	if body.is_in_group("player") and not is_dead:
 		state_machine.travel("Slide")
 		speed = dash_speed
@@ -41,7 +41,7 @@ func _on_dash_area_body_entered(body : RigidBody3D):
 		inactive_timer.start()
 
 
-func _on_tracking_area_body_entered(body : RigidBody3D):
+func _on_tracking_area_body_entered(body):
 	if body.is_in_group("player") and not is_dead:
 		state_machine.travel("Run")
 		tracking = true
@@ -52,7 +52,7 @@ func _inactive_timer_timeout():
 func death():
 	is_dead = true
 
-func _on_tocuh_area_body_entered(body : RigidBody3D):
+func _on_tocuh_area_body_entered(body):
 	if body.is_in_group("player") and not inactive:
 		body.handling_movement = false
 		var player_new_velocity = direction.normalized() * kick_power_horizontal

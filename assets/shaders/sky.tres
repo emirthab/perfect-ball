@@ -1,7 +1,7 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://brqnb56miitcl"]
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://brqnb56miitcl"]
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_tavam"]
-constant = Color(0.586879, 0.937335, 0.812819, 1)
+constant = Color(0.172549, 0.454902, 0.870588, 1)
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_g7mi5"]
 input_name = "eyedir"
@@ -14,10 +14,18 @@ default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5
 op_type = 3
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_7s5wf"]
-default_input_values = [0, 0.0, 1, 0.78]
+operator = 4
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_jtco6"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0, 0, 0), 2, Vector3(0.2, 0.2, 0.2)]
+expanded_output_ports = [0]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_ouw7t"]
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_05nhh"]
-constant = Color(0.538482, 0.798551, 1, 1)
+constant = Color(0.0745098, 0.737255, 1, 1)
 
 [resource]
 code = "shader_type sky;
@@ -25,12 +33,12 @@ code = "shader_type sky;
 
 
 void sky() {
-// ColorConstant:10
-	vec4 n_out10p0 = vec4(0.586879, 0.937335, 0.812819, 1.000000);
-
-
 // ColorConstant:5
-	vec4 n_out5p0 = vec4(0.538482, 0.798551, 1.000000, 1.000000);
+	vec4 n_out5p0 = vec4(0.074510, 0.737255, 1.000000, 1.000000);
+
+
+// ColorConstant:10
+	vec4 n_out10p0 = vec4(0.172549, 0.454902, 0.870588, 1.000000);
 
 
 // Input:11
@@ -44,12 +52,12 @@ void sky() {
 
 
 // FloatOp:14
-	float n_in14p1 = 0.78000;
-	float n_out14p0 = n_out12p1 + n_in14p1;
+	float n_in14p1 = 0.00000;
+	float n_out14p0 = mod(n_out12p1, n_in14p1);
 
 
 // Mix:13
-	vec3 n_out13p0 = mix(vec3(n_out10p0.xyz), vec3(n_out5p0.xyz), vec3(n_out14p0));
+	vec3 n_out13p0 = mix(vec3(n_out5p0.xyz), vec3(n_out10p0.xyz), vec3(n_out14p0));
 
 
 // Output:0
@@ -63,6 +71,7 @@ flags/use_half_res_pass = false
 flags/use_quarter_res_pass = false
 flags/disable_fog = false
 flags/use_debanding = false
+nodes/sky/0/position = Vector2(520, 140)
 nodes/sky/5/node = SubResource("VisualShaderNodeColorConstant_05nhh")
 nodes/sky/5/position = Vector2(-720, 320)
 nodes/sky/10/node = SubResource("VisualShaderNodeColorConstant_tavam")
@@ -70,9 +79,13 @@ nodes/sky/10/position = Vector2(-720, 240)
 nodes/sky/11/node = SubResource("VisualShaderNodeInput_g7mi5")
 nodes/sky/11/position = Vector2(-1238.43, 282.796)
 nodes/sky/12/node = SubResource("VisualShaderNodeVectorDecompose_26a2d")
-nodes/sky/12/position = Vector2(-740, 480)
+nodes/sky/12/position = Vector2(-860, 460)
 nodes/sky/13/node = SubResource("VisualShaderNodeMix_likdj")
 nodes/sky/13/position = Vector2(-360, 220)
 nodes/sky/14/node = SubResource("VisualShaderNodeFloatOp_7s5wf")
-nodes/sky/14/position = Vector2(-540, 460)
-nodes/sky/connections = PackedInt32Array(11, 0, 12, 0, 10, 0, 13, 0, 5, 0, 13, 1, 13, 0, 0, 0, 12, 1, 14, 0, 14, 0, 13, 2)
+nodes/sky/14/position = Vector2(-600, 440)
+nodes/sky/15/node = SubResource("VisualShaderNodeMix_jtco6")
+nodes/sky/15/position = Vector2(80, 180)
+nodes/sky/16/node = SubResource("VisualShaderNodeColorConstant_ouw7t")
+nodes/sky/16/position = Vector2(-140, 320)
+nodes/sky/connections = PackedInt32Array(11, 0, 12, 0, 14, 0, 13, 2, 12, 1, 14, 0, 16, 0, 15, 1, 13, 0, 0, 0, 5, 0, 13, 0, 10, 0, 13, 1)

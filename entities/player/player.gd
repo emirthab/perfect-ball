@@ -50,6 +50,8 @@ func _on_shoot_timeout():
 	can_shoot = true
 
 func _ready():
+	var goal_area : Area3D = get_tree().current_scene.get_node('Goal/GoalArea')
+	goal_area.body_entered.connect(_on_goal_area_body_entered)
 	input_tracking_timer.wait_time = input_tracking_delay
 	input_tracking_timer.one_shot = true
 	input_tracking_timer.timeout.connect(_on_shoot_timeout)
@@ -78,3 +80,7 @@ func _input(event : InputEvent):
 			first_pos = current_pos - (diff.clamp(-threshold, threshold))
 			can_shoot = false
 			input_tracking_timer.start()
+
+func _on_goal_area_body_entered(body):
+	if body == self:
+		UI.win.show()

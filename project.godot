@@ -23,9 +23,15 @@ UI="*res://ui/Ui.tscn"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
+
+[gui]
+
+theme/custom="res://ui/ui.theme"
+theme/custom_font="res://assets/fonts/LilitaOne-Regular.ttf"
 
 [input]
 
@@ -39,3 +45,4 @@ restart={
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/screen_space_aa=1
