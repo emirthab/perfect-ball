@@ -52,6 +52,10 @@ func _on_shoot_timeout():
 func _ready():
 	var goal_area : Area3D = get_tree().current_scene.get_node('Goal/GoalArea')
 	goal_area.body_entered.connect(_on_goal_area_body_entered)
+	
+	var game_area : Area3D = get_tree().current_scene.get_node('GameArea')
+	game_area.body_exited.connect(_on_game_area_body_exited)
+	
 	input_tracking_timer.wait_time = input_tracking_delay
 	input_tracking_timer.one_shot = true
 	input_tracking_timer.timeout.connect(_on_shoot_timeout)
@@ -64,7 +68,7 @@ func _input(event : InputEvent):
 	if event is InputEventMouseButton and handling_movement == true:
 		if event.is_pressed():
 			first_pos = event.position
-		if not event.is_pressed():
+		if event.is_released():
 			var diff : Vector2 = current_pos - first_pos
 			var impulse_up = abs(diff.y) / 20 if (diff.y < 0 and raycast.is_colliding()) else 0
 			var impulse = Vector3(diff.x / 8, impulse_up, diff.y / 3 if raycast.is_colliding() else 0 )
@@ -82,5 +86,11 @@ func _input(event : InputEvent):
 			input_tracking_timer.start()
 
 func _on_goal_area_body_entered(body):
-	if body == self:
+	if body == self and UI.lose.visible == false:
 		UI.win.show()
+		handling_movement = false
+
+func _on_game_area_body_exited(body):
+	if body == self and UI.win.visible == false:
+		UI.lose.show()
+		handling_movement = false

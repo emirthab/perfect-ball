@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://y1kpi64ctmhl"]
+[gd_scene load_steps=18 format=3 uid="uid://y1kpi64ctmhl"]
 
 [ext_resource type="Theme" uid="uid://de2l60l7ub7nb" path="res://ui/ui.theme" id="1_7efvr"]
 [ext_resource type="Script" path="res://ui/ui_controller.gd" id="1_j2t54"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crokby8mxvofm" path="res://assets/textures/ui/hand.png" id="3_8v4kq"]
 [ext_resource type="SpriteFrames" uid="uid://c5jdnufxqyimd" path="res://assets/textures/ui/gold_coin_animated.gif" id="5_4425a"]
 [ext_resource type="FontFile" uid="uid://dr4x4e7suab4s" path="res://assets/fonts/Bumpo.ttf" id="5_nn1em"]
+[ext_resource type="Texture2D" uid="uid://b71puyl05vjup" path="res://assets/textures/ui/shop.png" id="6_flwv1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y05n3"]
 bg_color = Color(1, 0.266667, 0.258824, 1)
@@ -123,9 +124,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -151.0
-offset_top = -370.0
+offset_top = -313.0
 offset_right = 151.0
-offset_bottom = -315.0
+offset_bottom = -258.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_jhkja")
@@ -153,9 +154,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -136.5
-offset_top = -451.0
+offset_top = -394.0
 offset_right = 136.5
-offset_bottom = -411.0
+offset_bottom = -354.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -193,7 +194,37 @@ text = "Level 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="Initial"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -49.0
+offset_right = 238.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_type_variation = &"ButtonHalfOrange"
+theme_override_font_sizes/font_size = 36
+text = " Market    "
+icon = ExtResource("6_flwv1")
+
+[node name="Button2" type="Button" parent="Initial"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -208.0
+offset_right = 238.0
+offset_bottom = -108.0
+grow_vertical = 2
+theme_type_variation = &"ButtonHalfRed"
+theme_override_font_sizes/font_size = 36
+text = " Remove ADS  "
+
 [node name="Lose" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -569,5 +600,19 @@ libraries = {
 }
 autoplay = "Hand Loop"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 17.0
+offset_bottom = 17.0
+color = Color(0.905882, 0.105882, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 17.0
+offset_bottom = 17.0
+color = Color(0, 0.521569, 0.784314, 1)
+
+[connection signal="pressed" from="Initial/Button" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="Initial/Button2" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Lose/Button" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Win/Button" to="." method="_on_replay_pressed"]

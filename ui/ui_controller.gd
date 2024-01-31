@@ -5,7 +5,10 @@ extends Control
 @onready var initial : Control = $Initial
 
 func _process(delta):
-	pass
+	if get_tree().current_scene:
+		var player = get_tree().current_scene.get_node("Player/Body")
+		$ColorRect.position = player.first_pos
+		$ColorRect2.position = player.current_pos
 
 func _input(event):
 	if event is InputEventMouseButton:
