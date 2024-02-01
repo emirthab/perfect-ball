@@ -28,6 +28,10 @@ window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nv.file_system/plugin.cfg")
+
 [gui]
 
 theme/custom="res://ui/ui.theme"
@@ -44,5 +48,6 @@ restart={
 [rendering]
 
 renderer/rendering_method="mobile"
+driver/threads/thread_model=2
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/screen_space_aa=1

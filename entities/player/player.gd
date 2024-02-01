@@ -67,6 +67,7 @@ func _process(delta : float):
 func _input(event : InputEvent):
 	if event is InputEventMouseButton and handling_movement == true:
 		if event.is_pressed():
+			current_pos = event.position
 			first_pos = event.position
 		if event.is_released():
 			var diff : Vector2 = current_pos - first_pos
@@ -85,9 +86,16 @@ func _input(event : InputEvent):
 			can_shoot = false
 			input_tracking_timer.start()
 
+func thread_vibration():
+	for i in range(0, 1000):
+		Input.vibrate_handheld(7)
+
 func _on_goal_area_body_entered(body):
 	if body == self and UI.lose.visible == false:
 		UI.win.show()
+		var thread = Thread.new()
+		thread.start(thread_vibration.bind())
+		
 		handling_movement = false
 
 func _on_game_area_body_exited(body):
