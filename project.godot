@@ -50,4 +50,3 @@ restart={
 renderer/rendering_method="mobile"
 driver/threads/thread_model=2
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/screen_space_aa=1

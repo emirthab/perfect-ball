@@ -138,10 +138,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 29.0
-offset_right = 64.0
-offset_bottom = 77.0
+offset_left = -128.0
+offset_top = -26.0
+offset_right = -87.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_8v4kq")
@@ -601,12 +601,14 @@ libraries = {
 autoplay = "Hand Loop"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 17.0
 offset_bottom = 17.0
 color = Color(0.905882, 0.105882, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 17.0
 offset_bottom = 17.0
