@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Player
 
 @export var input_tracking_delay : float = 0.2
 @export var speed_ratio : float = 1

@@ -57,6 +57,7 @@ section_length = 3.0
 [node name="Playground" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_j65jg")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73291, 1.23703, 36.6443)
 metadata/_edit_lock_ = true
 
