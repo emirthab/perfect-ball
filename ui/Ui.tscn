@@ -600,20 +600,6 @@ libraries = {
 }
 autoplay = "Hand Loop"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 17.0
-offset_bottom = 17.0
-color = Color(0.905882, 0.105882, 0, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 17.0
-offset_bottom = 17.0
-color = Color(0, 0.521569, 0.784314, 1)
-
 [connection signal="pressed" from="Initial/Button" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Initial/Button2" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Lose/Button" to="." method="_on_replay_pressed"]
