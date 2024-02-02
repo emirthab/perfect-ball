@@ -1,0 +1,45 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dhp0jdqx8cxpd"
+path="res://.godot/imported/pixel_glasses.glb-7e68e23a6f4046b5ee95a10236945512.scn"
+
+[deps]
+
+source_file="res://assets/geometry/accessories/pixel_glasses.glb"
+dest_files=["res://.godot/imported/pixel_glasses.glb-7e68e23a6f4046b5ee95a10236945512.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"Material.013": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/pixel_glasses/white.material"
+},
+"black": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/pixel_glasses/black.material"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

@@ -16,9 +16,10 @@ albedo_texture = ExtResource("2_jlr1g")
 
 [sub_resource type="SphereMesh" id="SphereMesh_0pl4i"]
 
-[node name="Player" type="Node3D"]
+[node name="PlayerBehaviour" type="Node3D"]
 
-[node name="Body" type="RigidBody3D" parent="." groups=["player"]]
+[node name="Player" type="RigidBody3D" parent="." groups=["player"]]
+collision_layer = 3
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_s7egx")
 can_sleep = false
@@ -28,19 +29,19 @@ angular_damp_mode = 1
 angular_damp = 2.0
 script = ExtResource("1_tbaw6")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="Body"]
+[node name="CollisionShape" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_nchoa")
 
-[node name="Model" type="MeshInstance3D" parent="Body"]
+[node name="Model" type="MeshInstance3D" parent="Player"]
 material_override = SubResource("StandardMaterial3D_0yagt")
 mesh = SubResource("SphereMesh_0pl4i")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
 remote_path = NodePath("../../Pivot")
 update_rotation = false
 update_scale = false
 
-[node name="RemoteTransform3D2" type="RemoteTransform3D" parent="Body"]
+[node name="RemoteTransform3D2" type="RemoteTransform3D" parent="Player"]
 remote_path = NodePath("../../Trail3D")
 update_rotation = false
 update_scale = false

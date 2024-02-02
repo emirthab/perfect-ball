@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://y1kpi64ctmhl"]
+[gd_scene load_steps=19 format=3 uid="uid://y1kpi64ctmhl"]
 
 [ext_resource type="Theme" uid="uid://de2l60l7ub7nb" path="res://ui/ui.theme" id="1_7efvr"]
 [ext_resource type="Script" path="res://ui/ui_controller.gd" id="1_j2t54"]
@@ -7,6 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://c5jdnufxqyimd" path="res://assets/textures/ui/gold_coin_animated.gif" id="5_4425a"]
 [ext_resource type="FontFile" uid="uid://dr4x4e7suab4s" path="res://assets/fonts/Bumpo.ttf" id="5_nn1em"]
 [ext_resource type="Texture2D" uid="uid://b71puyl05vjup" path="res://assets/textures/ui/shop.png" id="6_flwv1"]
+[ext_resource type="Texture2D" uid="uid://72ahobkllawh" path="res://assets/textures/ui/settings.png" id="8_jtkgs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y05n3"]
 bg_color = Color(1, 0.266667, 0.258824, 1)
@@ -138,10 +139,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -26.0
-offset_right = -87.0
-offset_bottom = 22.0
+offset_left = 23.0
+offset_top = 29.0
+offset_right = 64.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_8v4kq")
@@ -222,6 +223,22 @@ grow_vertical = 2
 theme_type_variation = &"ButtonHalfRed"
 theme_override_font_sizes/font_size = 36
 text = " Remove ADS  "
+
+[node name="Settings" type="Control" parent="Initial"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="TextureButton" type="TextureButton" parent="Initial/Settings"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 95.0
+offset_right = 60.0
+offset_bottom = 141.0
+texture_normal = ExtResource("8_jtkgs")
+texture_pressed = ExtResource("8_jtkgs")
+texture_hover = ExtResource("8_jtkgs")
+texture_disabled = ExtResource("8_jtkgs")
+texture_focused = ExtResource("8_jtkgs")
 
 [node name="Lose" type="Control" parent="."]
 visible = false
@@ -568,14 +585,14 @@ grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="Gold"]
 layout_mode = 2
-offset_left = -213.0
+offset_left = -192.0
 offset_top = 99.0
-offset_right = -43.0
+offset_right = -22.0
 offset_bottom = 146.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oip37")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gold"]
-position = Vector2(-74.9999, 122)
+position = Vector2(-53.9999, 122)
 scale = Vector2(0.546667, 0.546667)
 sprite_frames = ExtResource("5_4425a")
 animation = &"gif"
@@ -585,9 +602,9 @@ frame_progress = 0.658609
 
 [node name="Label" type="Label" parent="Gold"]
 layout_mode = 0
-offset_left = -210.0
+offset_left = -189.0
 offset_top = 106.0
-offset_right = -103.0
+offset_right = -82.0
 offset_bottom = 139.0
 theme_override_font_sizes/font_size = 28
 text = "3214"
@@ -600,7 +617,7 @@ libraries = {
 }
 autoplay = "Hand Loop"
 
-[connection signal="pressed" from="Initial/Button" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="Initial/Button2" to="." method="_on_replay_pressed"]
+[connection signal="gui_input" from="Initial/DarkEffect" to="." method="_on_tap_screen"]
+[connection signal="gui_input" from="Initial/Arrow" to="." method="_on_tap_screen"]
 [connection signal="pressed" from="Lose/Button" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Win/Button" to="." method="_on_replay_pressed"]

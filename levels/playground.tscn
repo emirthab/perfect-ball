@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bav4nold6hwyy"]
+[gd_scene load_steps=23 format=3 uid="uid://bav4nold6hwyy"]
 
 [ext_resource type="PackedScene" uid="uid://dygd6db6rvm2q" path="res://entities/player/player.tscn" id="2_j65jg"]
 [ext_resource type="Shader" uid="uid://brqnb56miitcl" path="res://assets/shaders/sky.tres" id="3_cte70"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://duiv4xijn3p7b" path="res://assets/geometry/bush.glb" id="8_f7cot"]
 [ext_resource type="PackedScene" uid="uid://c4u82uai2wfku" path="res://assets/geometry/barn.glb" id="9_lp1on"]
 [ext_resource type="Material" uid="uid://bx8uyoc5jciry" path="res://assets/materials/grass.material" id="12_ovojh"]
-[ext_resource type="Script" path="res://entities/game_area.gd" id="13_q433y"]
 [ext_resource type="Material" uid="uid://b31bwf2ogo2xo" path="res://assets/materials/pit.material" id="13_vhnu0"]
 [ext_resource type="Material" uid="uid://bixiwc8njdlqx" path="res://assets/materials/cloud_fog.material" id="14_pb4kj"]
 [ext_resource type="Material" uid="uid://7q4fa8ov3t0d" path="res://assets/materials/cloud.material" id="14_x3wmt"]
@@ -56,14 +55,24 @@ section_length = 3.0
 
 [node name="Playground" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("2_j65jg")]
+[node name="PlayerBehaviour" parent="." instance=ExtResource("2_j65jg")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73291, 1.23703, 36.6443)
 metadata/_edit_lock_ = true
 
 [node name="Goal" parent="." instance=ExtResource("3_venmi")]
+unique_name_in_owner = true
 transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0, 0.0665698, 9.9089)
 metadata/_edit_lock_ = true
+
+[node name="GameArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52999, 0, 25.1971)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="GameArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.406764, 7.48876, -0.00580597)
+depth = 15.0
+polygon = PackedVector2Array(3.90325, -17.7123, -5.38846, -17.7461, -7.34713, -13.5267, -8.18869, -8.85376, -9.05223, -4.78355, -9.4343, 2.98341, -11.0106, 6.6815, -10.5334, 11.1526, -8.03288, 14.9238, -4.38465, 16.9734, 1.39515, 16.7684, 7.13396, 12.6283, 9.30651, 4.02006, 12.5038, 0.330828, 12.3809, -4.42418, 6.88801, -9.34316)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.74246, -0.356228, 0.567323, -0.286977, 0.596105, 0.749869, -0.605308, -0.719556, 0.340355, 0, 9.86703, 0)
@@ -206,41 +215,6 @@ transform = Transform3D(-0.999895, 0, 0.0145206, 0, 1, 0, -0.0145206, 0, -0.9998
 [node name="barn" parent="Props" instance=ExtResource("9_lp1on")]
 transform = Transform3D(-0.510408, 0, 0.859932, 0, 1, 0, -0.859932, 0, -0.510408, -13.0812, 0, -4.00808)
 
-[node name="Enemies" type="Node3D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("6_k43d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18383, 0, 25.1478)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("6_k43d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142906, 0, 12.8923)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("6_k43d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82944, 0, 24.6449)
-
-[node name="Floor" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="Grass" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.05275, 16.6396)
-use_collision = true
-size = Vector3(79.0491, 10, 95.4824)
-material = ExtResource("12_ovojh")
-
-[node name="Pit" type="CSGMesh3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74584, -2.35276, 20.8828)
-operation = 2
-mesh = SubResource("TubeTrailMesh_6jf5d")
-
-[node name="GameArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52999, 0, 25.1971)
-script = ExtResource("13_q433y")
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="GameArea"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.406764, 7.48876, -0.00580597)
-depth = 15.0
-polygon = PackedVector2Array(3.90325, -17.7123, -5.38846, -17.7461, -7.34713, -13.5267, -8.18869, -8.85376, -9.05223, -4.78355, -9.4343, 2.98341, -11.0106, 6.6815, -10.5334, 11.1526, -8.03288, 14.9238, -4.38465, 16.9734, 1.39515, 16.7684, 7.13396, 12.6283, 9.30651, 4.02006, 12.5038, 0.330828, 12.3809, -4.42418, 6.88801, -9.34316)
-
 [node name="Clouds" type="Node3D" parent="."]
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Clouds"]
@@ -314,3 +288,29 @@ transform = Transform3D(0.785257, 0, 0, 0, 0.800793, 0, 0, 0, 1, 91.8894, -52.25
 radius = 51.8341
 rings = 20
 material = ExtResource("14_pb4kj")
+
+[node name="Enemies" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("6_k43d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18383, 0, 25.1478)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("6_k43d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142906, 0, 12.8923)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_k43d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82944, 0, 24.6449)
+
+[node name="Floor" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Grass" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.05275, 16.6396)
+use_collision = true
+size = Vector3(79.0491, 10, 95.4824)
+material = ExtResource("12_ovojh")
+
+[node name="Pit" type="CSGMesh3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74584, -2.35276, 20.8828)
+operation = 2
+mesh = SubResource("TubeTrailMesh_6jf5d")

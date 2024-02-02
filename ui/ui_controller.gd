@@ -1,20 +1,24 @@
 extends Control
 
-@onready var lose : Control = $Lose
-@onready var win : Control = $Win
-@onready var initial : Control = $Initial
+func _ready():
+	GameManager.on_game_state_changed.connect(on_game_state_changed)
 
-func _input(event):
-	if event is InputEventMouseButton:
-		initial.hide()
-	# Debug
-	if event.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
-		lose.hide()
-		initial.show()
-	
 func _on_replay_pressed():
-	get_tree().reload_current_scene()
-	lose.hide()
-	win.hide()
-	initial.show()
+	GameManager.restart_level()
+
+func on_game_state_changed(game_state : GameManager.GameState):
+	match game_state:
+		GameManager.GameState.Lose:
+			$Lose.show()
+		GameManager.GameState.Win:
+			$Win.show()
+		GameManager.GameState.Initial:
+			$Lose.hide()
+			$Win.hide()
+			$Initial.show()
+		GameManager.GameState.Playing:
+			$Initial.hide()
+
+func _on_tap_screen(event):
+	if event is InputEventMouseButton:
+		GameManager.set_game_state(GameManager.GameState.Playing)
