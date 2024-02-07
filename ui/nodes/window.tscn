@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf41bmspx7u6v"]
+
+[ext_resource type="StyleBox" uid="uid://da3umdhbl4shv" path="res://ui/styles/panel_default.stylebox" id="1_bwsdw"]
+[ext_resource type="StyleBox" uid="uid://b1fqgbu77ikgl" path="res://ui/styles/panel_shadow.stylebox" id="2_srcvp"]
+
+[node name="Panel" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.5
+offset_top = -286.0
+offset_right = 218.5
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_bwsdw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.17
+offset_bottom = -0.239998
+theme_override_styles/panel = ExtResource("2_srcvp")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.495
+anchor_right = 0.5
+anchor_bottom = 0.495
+offset_left = -95.5
+offset_top = -27.015
+offset_right = 93.5
+offset_bottom = 28.985
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1

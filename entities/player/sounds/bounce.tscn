@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjkqwui0ywmhu"]
+
+[ext_resource type="AudioStream" uid="uid://dyykwkv1r87t" path="res://assets/sounds/bounce.mp3" id="1_qeb84"]
+
+[node name="Bounce" type="AudioStreamPlayer"]
+stream = ExtResource("1_qeb84")

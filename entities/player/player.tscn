@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dygd6db6rvm2q"]
+[gd_scene load_steps=10 format=3 uid="uid://dygd6db6rvm2q"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_tbaw6"]
 [ext_resource type="Texture2D" uid="uid://cu3ef7rx2xgnq" path="res://assets/textures/ball.png" id="2_jlr1g"]
@@ -16,6 +16,9 @@ albedo_texture = ExtResource("2_jlr1g")
 
 [sub_resource type="SphereMesh" id="SphereMesh_0pl4i"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_bksue"]
+radius = 0.535244
+
 [node name="PlayerBehaviour" type="Node3D"]
 
 [node name="Player" type="RigidBody3D" parent="." groups=["player"]]
@@ -23,6 +26,7 @@ collision_layer = 3
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_s7egx")
 can_sleep = false
+max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 5.0
 angular_damp_mode = 1
@@ -46,6 +50,13 @@ remote_path = NodePath("../../Trail3D")
 update_rotation = false
 update_scale = false
 
+[node name="BounceArea" type="Area3D" parent="Player"]
+collision_layer = 0
+input_ray_pickable = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Player/BounceArea"]
+shape = SubResource("SphereShape3D_bksue")
+
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Camera" type="Camera3D" parent="Pivot"]
@@ -62,3 +73,5 @@ cast_shadow = 0
 script = ExtResource("3_ruoko")
 motionDelta = 0.2
 lifespan = 0.3
+
+[connection signal="body_entered" from="Player/BounceArea" to="Player" method="_on_bounce_area_body_entered"]

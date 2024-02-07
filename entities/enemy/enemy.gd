@@ -43,6 +43,7 @@ func _on_dash_area_body_entered(body):
 		state_machine.travel("Slide")
 		speed = dash_speed
 		death()
+		$SlideSfx.play()
 		inactive_timer.start()
 
 
@@ -60,6 +61,7 @@ func _on_tocuh_area_body_entered(body):
 		var player_new_velocity = direction.normalized() * kick_power_horizontal
 		player_new_velocity.y = kick_power_vertical
 		body.linear_velocity = player_new_velocity
+		body.play_kick_sound()
 		await get_tree().create_timer(0.2).timeout
 		body.handling_movement = true
 

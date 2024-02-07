@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctfmbjlebimya"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y05n3"]
+bg_color = Color(1, 0.266667, 0.258824, 1)
+border_width_top = 10
+border_color = Color(0.996078, 0.639216, 0.619608, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p25oi"]
+bg_color = Color(1, 0.34902, 0.364706, 1)
+skew = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il23o"]
+bg_color = Color(0.8, 0.172549, 0.180392, 1)
+
+[node name="Banner" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -347.0
+offset_top = 188.0
+offset_right = 1067.0
+offset_bottom = 334.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y05n3")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 198.0
+offset_right = 72.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel11" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = 198.0
+offset_right = -53.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel12" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -237.0
+offset_top = 198.0
+offset_right = -178.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel8" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -347.0
+offset_top = 326.0
+offset_right = 1067.0
+offset_bottom = 334.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_il23o")
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 198.0
+offset_right = 197.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 198.0
+offset_right = 322.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 198.0
+offset_right = 447.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 198.0
+offset_right = 572.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 198.0
+offset_right = 697.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel9" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 198.0
+offset_right = 822.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Panel10" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 198.0
+offset_right = 947.0
+offset_bottom = 327.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p25oi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.5
+offset_top = 215.0
+offset_right = 136.5
+offset_bottom = 317.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.368627)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 44
+text = "Level 1
+Failed!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jf2qmdmhuvgn"]
+
+[ext_resource type="AudioStream" uid="uid://1krexvpf3x4i" path="res://assets/sounds/kick.mp3" id="1_s48nu"]
+
+[node name="Kick" type="AudioStreamPlayer"]
+stream = ExtResource("1_s48nu")

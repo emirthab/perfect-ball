@@ -57,7 +57,7 @@ section_length = 3.0
 
 [node name="PlayerBehaviour" parent="." instance=ExtResource("2_j65jg")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73291, 1.23703, 36.6443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73291, 0.44725, 36.6443)
 metadata/_edit_lock_ = true
 
 [node name="Goal" parent="." instance=ExtResource("3_venmi")]
@@ -75,7 +75,7 @@ depth = 15.0
 polygon = PackedVector2Array(3.90325, -17.7123, -5.38846, -17.7461, -7.34713, -13.5267, -8.18869, -8.85376, -9.05223, -4.78355, -9.4343, 2.98341, -11.0106, 6.6815, -10.5334, 11.1526, -8.03288, 14.9238, -4.38465, 16.9734, 1.39515, 16.7684, 7.13396, 12.6283, 9.30651, 4.02006, 12.5038, 0.330828, 12.3809, -4.42418, 6.88801, -9.34316)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.74246, -0.356228, 0.567323, -0.286977, 0.596105, 0.749869, -0.605308, -0.719556, 0.340355, 0, 9.86703, 0)
+transform = Transform3D(0.74246, -0.356228, 0.567323, -0.286977, 0.596105, 0.749869, -0.605308, -0.719556, 0.340355, 0, 9.86703, 28.857)
 shadow_enabled = true
 shadow_opacity = 0.52
 

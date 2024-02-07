@@ -2,7 +2,19 @@ extends Node
 
 enum GameState { Initial, Playing, Lose, Win }
 
+var game_config : Dictionary  = {
+	"sounds_enabled" : true,
+	"vibrations_enabled" : true
+}
+func get_game_config() -> Dictionary:
+	return game_config
+
+func set_game_config(key : String, value):
+	game_config[key] = value
+	emit_signal("on_game_config_changed", game_config)
+	
 signal on_game_state_changed
+signal on_game_config_changed
 
 var game_state : GameState = GameState.Initial : get = get_game_state, set = set_game_state
 func get_game_state() -> GameState:
