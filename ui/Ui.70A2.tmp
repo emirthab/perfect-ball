@@ -240,7 +240,7 @@ metadata/_edit_lock_ = true
 [node name="Banner" parent="Lose" instance=ExtResource("8_cymde")]
 layout_mode = 1
 
-[node name="Replay" type="Button" parent="Lose"]
+[node name="Button" type="Button" parent="Lose"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -279,7 +279,7 @@ metadata/_edit_lock_ = true
 [node name="Banner" parent="Win" instance=ExtResource("9_crcgt")]
 layout_mode = 1
 
-[node name="Replay" type="Button" parent="Win"]
+[node name="Button" type="Button" parent="Win"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -295,7 +295,7 @@ grow_vertical = 0
 text = "Replay
 "
 
-[node name="NextLevel" type="Button" parent="Win"]
+[node name="Button2" type="Button" parent="Win"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -436,9 +436,8 @@ volume_db = -10.355
 [connection signal="gui_input" from="Initial/DarkEffect" to="." method="_on_tap_screen"]
 [connection signal="gui_input" from="Initial/Arrow" to="." method="_on_tap_screen"]
 [connection signal="pressed" from="Initial/Settings/TextureButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Lose/Replay" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="Win/Replay" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="Win/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="Lose/Button" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="Win/Button" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Settings/Window/Close" to="." method="_on_close_settings_pressed"]
 [connection signal="pressed" from="Settings/Window/Sounds" to="." method="_toggle_sounds_settings"]
 [connection signal="pressed" from="Settings/Window/Vibration" to="." method="_toggle_vibration_settings"]

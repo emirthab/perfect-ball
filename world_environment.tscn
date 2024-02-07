@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgt1k1snrb66f"]
+
+[ext_resource type="Shader" uid="uid://brqnb56miitcl" path="res://assets/shaders/sky.tres" id="1_46i24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6cek"]
+shader = ExtResource("1_46i24")
+
+[sub_resource type="Sky" id="Sky_qru6y"]
+sky_material = SubResource("ShaderMaterial_g6cek")
+
+[sub_resource type="Environment" id="Environment_2gkn7"]
+background_mode = 2
+sky = SubResource("Sky_qru6y")
+sky_rotation = Vector3(3.48787e-16, 3.39641, 3.48787e-16)
+ambient_light_source = 2
+ambient_light_color = Color(0.654902, 0.698039, 0.890196, 1)
+reflected_light_source = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_2gkn7")

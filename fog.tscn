@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds18u2n45plx6"]
+
+[ext_resource type="Shader" path="res://assets/shaders/fog.gdshader" id="1_f16t1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_vn55h"]
+size = Vector2(2, 2)
+
+[sub_resource type="Gradient" id="Gradient_nv3ke"]
+offsets = PackedFloat32Array(0.385246, 0.594262)
+colors = PackedColorArray(0, 0, 0, 0, 0.674391, 0.881236, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ln60q"]
+gradient = SubResource("Gradient_nv3ke")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn3ta"]
+render_priority = 0
+shader = ExtResource("1_f16t1")
+shader_parameter/fog_intensity = 0.687
+shader_parameter/fog_amount = 0.021
+shader_parameter/gradient = SubResource("GradientTexture1D_ln60q")
+
+[node name="Fog" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_vn55h")
+surface_material_override/0 = SubResource("ShaderMaterial_pn3ta")

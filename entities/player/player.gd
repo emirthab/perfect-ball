@@ -26,9 +26,9 @@ var handling_movement : bool = true
 
 func _physics_process(delta : float):
 	pivot.look_at(GameManager.get_goal_pivot().transform.origin, Vector3.UP)
-	if not handling_movement or GameManager.get_game_state() != GameManager.GameState.Playing:
+	if not handling_movement:
 		return
-		
+	
 	var diff = current_pos - first_pos
 	movement = Vector3(diff.x, -0.1, diff.y) * speed_ratio
 	movement = movement.rotated(Vector3(0, 1, 0).normalized(), pivot.rotation.y)
@@ -41,7 +41,7 @@ func _physics_process(delta : float):
 		movement = movement.limit_length(max_velocity_on_floor)
 		angular_damp = 2
 		linear_damp = 4
-		if first_pos != Vector2(0, 0) and handling_movement:
+		if first_pos != Vector2(0, 0) and handling_movement and GameManager.game_state == GameManager.GameState.Playing:
 			linear_velocity = movement
 	else:
 		physics_material_override.absorbent = false
